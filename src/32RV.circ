@@ -56,6 +56,66 @@
     <a name="circuit" val="main"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(340,470)" name="Clock"/>
+    <comp lib="0" loc="(500,380)" name="Tunnel">
+      <a name="label" val="branch"/>
+    </comp>
+    <comp lib="0" loc="(530,340)" name="Tunnel">
+      <a name="label" val="jmp_ins_idx"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(790,310)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+    </comp>
+    <comp lib="0" loc="(810,310)" name="Tunnel">
+      <a name="label" val="branch"/>
+    </comp>
+    <comp lib="0" loc="(860,270)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(890,270)" name="Tunnel">
+      <a name="label" val="jmp_ins_idx"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="0" loc="(920,450)" name="Constant"/>
+    <comp lib="1" loc="(460,380)" name="NOT Gate">
+      <a name="facing" val="west"/>
+    </comp>
+    <comp lib="2" loc="(430,350)" name="Multiplexer">
+      <a name="facing" val="west"/>
+      <a name="width" val="8"/>
+    </comp>
+    <comp lib="4" loc="(640,520)" name="RAM">
+      <a name="appearance" val="classic"/>
+      <a name="dataWidth" val="32"/>
+    </comp>
+    <comp lib="4" loc="(920,400)" name="Register">
+      <a name="appearance" val="logisim_evolution"/>
+      <a name="label" val="IF_ID"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp loc="(620,410)" name="ProgramCounter"/>
+    <comp loc="(740,100)" name="RegisterFile"/>
+    <wire from="(340,470)" to="(400,470)"/>
+    <wire from="(400,350)" to="(400,410)"/>
+    <wire from="(400,350)" to="(430,350)"/>
+    <wire from="(400,430)" to="(400,470)"/>
+    <wire from="(400,470)" to="(920,470)"/>
+    <wire from="(450,370)" to="(450,380)"/>
+    <wire from="(450,380)" to="(460,380)"/>
+    <wire from="(460,340)" to="(530,340)"/>
+    <wire from="(460,360)" to="(620,360)"/>
+    <wire from="(490,380)" to="(500,380)"/>
+    <wire from="(620,360)" to="(620,410)"/>
+    <wire from="(620,430)" to="(620,530)"/>
+    <wire from="(620,530)" to="(640,530)"/>
+    <wire from="(790,310)" to="(810,310)"/>
+    <wire from="(860,270)" to="(890,270)"/>
+    <wire from="(880,610)" to="(890,610)"/>
+    <wire from="(890,430)" to="(890,610)"/>
+    <wire from="(890,430)" to="(920,430)"/>
+    <wire from="(980,430)" to="(1060,430)"/>
   </circuit>
   <circuit name="ProgramCounter">
     <a name="appearance" val="logisim_evolution"/>
@@ -66,7 +126,7 @@
       <a name="appearance" val="NewPins"/>
       <a name="label" val="inPC"/>
       <a name="radix" val="16"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(150,190)" name="Pin">
       <a name="appearance" val="NewPins"/>
@@ -74,7 +134,7 @@
     </comp>
     <comp lib="0" loc="(190,110)" name="Tunnel">
       <a name="label" val="inPC_t"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(190,190)" name="Tunnel">
       <a name="label" val="CLK_t"/>
@@ -82,7 +142,7 @@
     <comp lib="0" loc="(360,130)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="in_PC_t"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(360,170)" name="Tunnel">
       <a name="facing" val="east"/>
@@ -94,25 +154,25 @@
     <comp lib="0" loc="(470,220)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="outPC_t"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(540,150)" name="Constant">
       <a name="value" val="0x4"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(640,90)" name="Tunnel">
       <a name="label" val="outPCPlus4_t"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(850,130)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="outPCPlus4_t"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(850,190)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="outPC_t"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(890,130)" name="Pin">
       <a name="appearance" val="NewPins"/>
@@ -120,7 +180,7 @@
       <a name="label" val="outPCPlus4"/>
       <a name="output" val="true"/>
       <a name="radix" val="16"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
     <comp lib="0" loc="(890,190)" name="Pin">
       <a name="appearance" val="NewPins"/>
@@ -128,21 +188,17 @@
       <a name="label" val="outPC"/>
       <a name="output" val="true"/>
       <a name="radix" val="16"/>
-      <a name="width" val="32"/>
+      <a name="width" val="8"/>
     </comp>
-    <comp lib="3" loc="(600,140)" name="Adder">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="4" loc="(390,100)" name="Register">
+    <comp lib="3" loc="(600,140)" name="Adder"/>
+    <comp lib="4" loc="(380,100)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="width" val="32"/>
     </comp>
     <wire from="(150,110)" to="(190,110)"/>
     <wire from="(150,190)" to="(190,190)"/>
-    <wire from="(360,130)" to="(390,130)"/>
-    <wire from="(360,170)" to="(390,170)"/>
-    <wire from="(380,150)" to="(390,150)"/>
-    <wire from="(450,130)" to="(470,130)"/>
+    <wire from="(360,130)" to="(380,130)"/>
+    <wire from="(360,170)" to="(380,170)"/>
+    <wire from="(440,130)" to="(470,130)"/>
     <wire from="(470,130)" to="(470,220)"/>
     <wire from="(470,130)" to="(560,130)"/>
     <wire from="(540,150)" to="(560,150)"/>
@@ -1384,28 +1440,28 @@
       <a name="label" val="x20"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="8" loc="(2252,95)" name="Text">
+    <comp lib="8" loc="(2250,95)" name="Text">
       <a name="text" val="Output Register Values"/>
     </comp>
-    <comp lib="8" loc="(440,528)" name="Text">
+    <comp lib="8" loc="(440,525)" name="Text">
       <a name="text" val="Write Enable"/>
     </comp>
-    <comp lib="8" loc="(440,598)" name="Text">
+    <comp lib="8" loc="(440,595)" name="Text">
       <a name="text" val="Clock"/>
     </comp>
-    <comp lib="8" loc="(465,367)" name="Text">
+    <comp lib="8" loc="(465,365)" name="Text">
       <a name="text" val="Register Destination Index"/>
     </comp>
-    <comp lib="8" loc="(467,436)" name="Text">
+    <comp lib="8" loc="(465,435)" name="Text">
       <a name="text" val="Register Destination Value"/>
     </comp>
-    <comp lib="8" loc="(486,238)" name="Text">
+    <comp lib="8" loc="(485,235)" name="Text">
       <a name="text" val="Register Source Index"/>
     </comp>
-    <comp lib="8" loc="(756,368)" name="Text">
+    <comp lib="8" loc="(755,365)" name="Text">
       <a name="text" val="si x0we enciende, es falta"/>
     </comp>
-    <comp lib="8" loc="(878,325)" name="Text">
+    <comp lib="8" loc="(875,325)" name="Text">
       <a name="text" val="x0 siempre es 0"/>
     </comp>
     <wire from="(1110,1040)" to="(1170,1040)"/>
@@ -1801,4 +1857,32 @@
     <wire from="(910,760)" to="(930,760)"/>
     <wire from="(910,890)" to="(930,890)"/>
   </circuit>
+  <vhdl name="ALU">
+LIBRARY ieee;&#13;
+USE ieee.std_logic_1164.all;&#13;
+&#13;
+ENTITY ALU IS&#13;
+  PORT (&#13;
+  ------------------------------------------------------------------------------&#13;
+  --Insert input ports below&#13;
+    clock      : IN  std_logic;                    -- input bit example&#13;
+    val        : IN  std_logic_vector(3 DOWNTO 0); -- input vector example&#13;
+  ------------------------------------------------------------------------------&#13;
+  --Insert output ports below&#13;
+    max        : OUT std_logic;                    -- output bit example&#13;
+    cpt        : OUT std_logic_vector(3 DOWNTO 0)  -- output vector example&#13;
+    );&#13;
+END ALU;&#13;
+&#13;
+--------------------------------------------------------------------------------&#13;
+--Complete your VHDL description below&#13;
+--------------------------------------------------------------------------------&#13;
+&#13;
+ARCHITECTURE TypeArchitecture OF ALU IS&#13;
+&#13;
+BEGIN&#13;
+&#13;
+&#13;
+END TypeArchitecture;&#13;
+</vhdl>
 </project>
