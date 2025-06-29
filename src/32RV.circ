@@ -25,7 +25,7 @@
   <lib desc="#BFH-Praktika" name="9"/>
   <lib desc="#Input/Output-Extra" name="10"/>
   <lib desc="#Soc" name="11"/>
-  <main name="ProgramCounter"/>
+  <main name="RegisterFile"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
     <a name="simlimit" val="1000"/>
@@ -2766,32 +2766,547 @@
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
   </circuit>
-  <vhdl name="ALU">
-LIBRARY ieee;&#13;
-USE ieee.std_logic_1164.all;&#13;
+  <vhdl name="ALU">library IEEE;&#13;
+use IEEE.STD_LOGIC_1164.ALL;&#13;
 &#13;
-ENTITY ALU IS&#13;
-  PORT (&#13;
-  ------------------------------------------------------------------------------&#13;
-  --Insert input ports below&#13;
-    clock      : IN  std_logic;                    -- input bit example&#13;
-    val        : IN  std_logic_vector(3 DOWNTO 0); -- input vector example&#13;
-  ------------------------------------------------------------------------------&#13;
-  --Insert output ports below&#13;
-    max        : OUT std_logic;                    -- output bit example&#13;
-    cpt        : OUT std_logic_vector(3 DOWNTO 0)  -- output vector example&#13;
+entity ALU is&#13;
+  port (&#13;
+    A   : in  STD_LOGIC_VECTOR(31 downto 0);&#13;
+    B   : in  STD_LOGIC_VECTOR(31 downto 0);&#13;
+    Op  : in  STD_LOGIC_VECTOR(6 downto 0);  -- solo Op(2 downto 0) importa&#13;
+         -- 000 = ADD&#13;
+         -- 001 = SUB&#13;
+         -- 010 = AND&#13;
+         -- 011 = OR&#13;
+         -- 100 = XOR&#13;
+         -- 101 = SLL&#13;
+         -- 110 = SRL&#13;
+         -- 111 = SRA&#13;
+    Y   : out STD_LOGIC_VECTOR(31 downto 0)&#13;
+  );&#13;
+end entity ALU;&#13;
+&#13;
+architecture Behavioral of ALU is&#13;
+begin&#13;
+  process(A, B, Op)&#13;
+    variable tmp    : STD_LOGIC_VECTOR(31 downto 0);&#13;
+    variable carry  : STD_LOGIC;&#13;
+    variable i      : integer range 0 to 31;&#13;
+    variable Binv   : STD_LOGIC_VECTOR(31 downto 0);&#13;
+    variable shamt  : integer range 0 to 31;&#13;
+  begin&#13;
+    -- 1) Calcular shift-amount (5 LSB de B)&#13;
+    shamt := 0;&#13;
+    for i in 0 to 4 loop&#13;
+      if B(i) = '1' then&#13;
+        shamt := shamt + (2**i);&#13;
+      end if;&#13;
+    end loop;&#13;
+&#13;
+    -- 2) Inicializar&#13;
+    tmp   := (others =&gt; '0');&#13;
+    carry := '0';&#13;
+&#13;
+    -- 3) Seleccionar operación&#13;
+    case Op(2 downto 0) is&#13;
+&#13;
+      when "000" =&gt;  -- ADD&#13;
+        for i in 0 to 31 loop&#13;
+          tmp(i)  := A(i) xor B(i) xor carry;&#13;
+          carry   := (A(i) and B(i)) or (carry and (A(i) xor B(i)));&#13;
+        end loop;&#13;
+&#13;
+      when "001" =&gt;  -- SUB = A + not(B) + 1&#13;
+        for i in 0 to 31 loop&#13;
+          Binv(i) := not B(i);&#13;
+        end loop;&#13;
+        carry := '1';&#13;
+        for i in 0 to 31 loop&#13;
+          tmp(i)  := A(i) xor Binv(i) xor carry;&#13;
+          carry   := (A(i) and Binv(i)) or (carry and (A(i) xor Binv(i)));&#13;
+        end loop;&#13;
+&#13;
+      when "010" =&gt;  -- AND&#13;
+        for i in 0 to 31 loop&#13;
+          tmp(i) := A(i) and B(i);&#13;
+        end loop;&#13;
+&#13;
+      when "011" =&gt;  -- OR&#13;
+        for i in 0 to 31 loop&#13;
+          tmp(i) := A(i) or B(i);&#13;
+        end loop;&#13;
+&#13;
+      when "100" =&gt;  -- XOR&#13;
+        for i in 0 to 31 loop&#13;
+          tmp(i) := A(i) xor B(i);&#13;
+        end loop;&#13;
+&#13;
+      when "101" =&gt;  -- SLL (logical left)&#13;
+        for i in 31 downto 0 loop&#13;
+          if i - shamt &gt;= 0 then&#13;
+            tmp(i) := A(i - shamt);&#13;
+          else&#13;
+            tmp(i) := '0';&#13;
+          end if;&#13;
+        end loop;&#13;
+&#13;
+      when "110" =&gt;  -- SRL (logical right)&#13;
+        for i in 0 to 31 loop&#13;
+          if i + shamt &lt;= 31 then&#13;
+            tmp(i) := A(i + shamt);&#13;
+          else&#13;
+            tmp(i) := '0';&#13;
+          end if;&#13;
+        end loop;&#13;
+&#13;
+      when "111" =&gt;  -- SRA (arithmetic right)&#13;
+        for i in 0 to 31 loop&#13;
+          if i + shamt &lt;= 31 then&#13;
+            tmp(i) := A(i + shamt);&#13;
+          else&#13;
+            tmp(i) := A(31);  -- rellena con el bit de signo&#13;
+          end if;&#13;
+        end loop;&#13;
+&#13;
+      when others =&gt;&#13;
+        tmp := (others =&gt; '0');&#13;
+    end case;&#13;
+&#13;
+    -- 4) Entregar resultado&#13;
+    Y &lt;= tmp;&#13;
+  end process;&#13;
+end architecture Behavioral;&#13;
+</vhdl>
+  <vhdl name="msi_protocol">library ieee;&#13;
+use ieee.std_logic_1164.all;&#13;
+use ieee.numeric_std.all;&#13;
+&#13;
+entity msi_protocol is&#13;
+    port (&#13;
+        clk             : in std_logic;&#13;
+        reset           : in std_logic;&#13;
+        cpu0_state      : in std_logic_vector(1 downto 0); -- MSI state for cpu0&#13;
+        cpu1_state      : in std_logic_vector(1 downto 0); -- MSI state for cpu1&#13;
+        cpu0_addr       : in std_logic_vector(31 downto 0);   -- Address from cpu0&#13;
+        cpu1_addr       : in std_logic_vector(31 downto 0);   -- Address from cpu1&#13;
+        invalidate_cpu0 : out std_logic;                      -- Invalidate signal for cpu0&#13;
+        invalidate_cpu1 : out std_logic                       -- Invalidate signal for cpu1&#13;
     );&#13;
-END ALU;&#13;
+end msi_protocol;&#13;
 &#13;
---------------------------------------------------------------------------------&#13;
---Complete your VHDL description below&#13;
---------------------------------------------------------------------------------&#13;
-&#13;
-ARCHITECTURE TypeArchitecture OF ALU IS&#13;
-&#13;
-BEGIN&#13;
-&#13;
-&#13;
-END TypeArchitecture;&#13;
+architecture Behavioral of msi_protocol is&#13;
+begin&#13;
+    process(clk, reset)&#13;
+    begin&#13;
+        if reset = '1' then&#13;
+            invalidate_cpu0 &lt;= '0';&#13;
+            invalidate_cpu1 &lt;= '0';&#13;
+        elsif rising_edge(clk) then&#13;
+            -- If CPU0 modifies a cache line, invalidate the corresponding line in CPU1&#13;
+            if cpu0_state = "10" then -- Modified state in cpu0&#13;
+                if cpu1_state = "01" and cpu0_addr = cpu1_addr then -- Shared state in cpu1 for the same address&#13;
+                    invalidate_cpu1 &lt;= '1'; -- Invalidate the cache line in cpu1&#13;
+                else&#13;
+                    invalidate_cpu1 &lt;= '0';&#13;
+                end if;&#13;
+            end if;&#13;
+            &#13;
+            -- If CPU1 modifies a cache line, invalidate the corresponding line in CPU0&#13;
+            if cpu1_state = "10" then -- Modified state in cpu1&#13;
+                if cpu0_state = "01" and cpu1_addr = cpu0_addr then -- Shared state in cpu0 for the same address&#13;
+                    invalidate_cpu0 &lt;= '1'; -- Invalidate the cache line in cpu0&#13;
+                else&#13;
+                    invalidate_cpu0 &lt;= '0';&#13;
+                end if;&#13;
+            end if;&#13;
+        end if;&#13;
+    end process;&#13;
+end Behavioral;&#13;
+</vhdl>
+  <vhdl name="FIFO">library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity FIFO is
+  port(
+    clk            : in  std_logic;	-- system clock
+    rst            : in  std_logic;	-- synchronous reset
+
+    -- CPU0 interface
+    cpu0_read_in   : in  std_logic;					-- CPU0 read request (1 = read)
+    cpu0_write_in  : in  std_logic;					-- CPU0 write request (1 = write)
+    cpu0_data_in   : in  std_logic_vector(31 downto 0);	-- CPU0 write data
+    cpu0_addr      : in  std_logic_vector(2 downto 0);	-- CPU0 address
+
+    -- CPU1 interface
+    cpu1_read_in   : in  std_logic;
+    cpu1_write_in  : in  std_logic;
+    cpu1_data_in   : in  std_logic_vector(31 downto 0);
+    cpu1_addr      : in  std_logic_vector(2 downto 0);
+
+    -- Output to SDRAM
+    read_out       : out std_logic;	-- 1 = perform read
+    write_out      : out std_logic;	-- 1 = perform write
+
+    addr_out       : out std_logic_vector(2 downto 0);	-- address to SDRAM
+    data_out       : out std_logic_vector(31 downto 0)	-- data to SDRAM (for writes)
+  );
+end entity FIFO;
+
+architecture behavior of FIFO is
+  -- record and array _types_
+  type sdramrequest is record
+    requester : std_logic;			-- '0' = CPU0, '1' = CPU1
+    operation : std_logic;            	-- 0 = read, 1 = write
+    address   : std_logic_vector(2 downto 0);
+    data      : std_logic_vector(31 downto 0);
+    valid     : std_logic;
+  end record sdramrequest;
+
+  -- circular buffer of 1024 requests
+  type sdramRequestBuffer is array(0 to 1023) of sdramrequest;
+
+  -- allocate the buffer signal 
+  signal request_buf : sdramRequestBuffer := (
+    others =&gt; (
+      requester =&gt; '0',
+      operation =&gt; '0',
+      address   =&gt; (others =&gt; '0'),
+      data      =&gt; (others =&gt; '0'),
+      valid     =&gt; '0'
+    )
+  );
+
+  -- track which CPU was last served 
+  signal previousRequester : std_logic;  -- 0 is cpu0, 1 is cpu1
+
+begin
+
+  process(clk, rst)
+  begin
+    if rst = '1' then
+    	 -- synchronous reset: clear buffer and outputs
+      -- clear buffer on reset
+      request_buf &lt;= (others =&gt; (
+        requester =&gt; '0',
+        operation =&gt; '0',
+        address   =&gt; (others =&gt; '0'),
+        data      =&gt; (others =&gt; '0'),
+        valid     =&gt; '0'
+      ));
+      read_out  &lt;= '0';
+      write_out &lt;= '0';
+      previousRequester &lt;= '0';
+
+    elsif rising_edge(clk) then
+
+    	 -- if there’s a pending SDRAM request at buffer slot 0
+      if request_buf(0).valid = '1' then
+        -- dequeue slot 0
+        read_out  &lt;= not request_buf(0).operation;
+        write_out &lt;=     request_buf(0).operation;
+        addr_out  &lt;=     request_buf(0).address;
+        data_out  &lt;=     request_buf(0).data;
+
+        -- once served, invalidate this slot
+        request_buf(0).valid &lt;= '0';
+
+      else
+      -- buffer is empty → directly arbitrate between CPU0 &amp; CPU1
+
+        -- 1) No requests from either CPU
+        if cpu0_read_in='0' and cpu0_write_in='0'
+           and cpu1_read_in='0' and cpu1_write_in='0' then
+
+          read_out  &lt;= '0';
+          write_out &lt;= '0';
+
+        -- 2) CPU1 wants to write only
+        elsif cpu0_read_in='0' and cpu0_write_in='0'
+           and cpu1_read_in='0' and cpu1_write_in='1' then
+
+          read_out          &lt;= '0';
+          write_out         &lt;= '1';
+          previousRequester &lt;= '1';
+
+        -- 3) CPU1 wants to read only
+        elsif cpu0_read_in='0' and cpu0_write_in='0'
+           and cpu1_read_in='1' and cpu1_write_in='0' then
+
+          read_out          &lt;= '1';
+          write_out         &lt;= '0';
+          previousRequester &lt;= '1';
+
+        -- 4) CPU0 wants to write only
+        elsif cpu0_read_in='0' and cpu0_write_in='1'
+           and cpu1_read_in='0' and cpu1_write_in='0' then
+
+          read_out          &lt;= '0';
+          write_out         &lt;= '1';
+          previousRequester &lt;= '0';
+
+        -- 5) CPU0 wants to read only
+        elsif cpu0_read_in='1' and cpu0_write_in='0'
+           and cpu1_read_in='0' and cpu1_write_in='0' then
+
+          read_out          &lt;= '1';
+          write_out         &lt;= '0';
+          previousRequester &lt;= '0';
+
+        -- 6) Both CPUs want to read → enqueue CPU1’s read
+        elsif cpu0_read_in='1' and cpu0_write_in='0'
+           and cpu1_read_in='1' and cpu1_write_in='0' then
+
+          read_out          &lt;= '1';
+          write_out         &lt;= '0';
+          previousRequester &lt;= '0';
+
+          request_buf(0).requester &lt;= '1';        -- from CPU1
+          request_buf(0).operation &lt;= '0';        -- read
+          request_buf(0).address   &lt;= cpu1_addr;
+          request_buf(0).valid     &lt;= '1';
+
+        -- 7) CPU0 read &amp; CPU1 write → enqueue CPU1’s write
+        elsif cpu0_read_in='1' and cpu0_write_in='0'
+           and cpu1_read_in='0' and cpu1_write_in='1' then
+
+          read_out          &lt;= '1';
+          write_out         &lt;= '0';
+          previousRequester &lt;= '0';
+
+          request_buf(0).requester &lt;= '1';
+          request_buf(0).operation &lt;= '1';        -- write
+          request_buf(0).address   &lt;= cpu1_addr;
+          request_buf(0).data      &lt;= cpu1_data_in;
+          request_buf(0).valid     &lt;= '1';
+
+        -- 8) CPU0 write &amp; CPU1 read → enqueue CPU1’s read
+        elsif cpu0_read_in='0' and cpu0_write_in='1'
+           and cpu1_read_in='1' and cpu1_write_in='0' then
+
+          read_out          &lt;= '0';
+          write_out         &lt;= '1';
+          previousRequester &lt;= '0';
+
+          request_buf(0).requester &lt;= '1';
+          request_buf(0).operation &lt;= '0';        -- read
+          request_buf(0).address   &lt;= cpu1_addr;
+          request_buf(0).valid     &lt;= '1';
+
+        -- 9) Both CPUs want to write → enqueue CPU1’s write
+        elsif cpu0_read_in='0' and cpu0_write_in='1'
+           and cpu1_read_in='0' and cpu1_write_in='1' then
+
+          read_out          &lt;= '0';
+          write_out         &lt;= '1';
+          previousRequester &lt;= '0';
+
+          request_buf(0).requester &lt;= '1';
+          request_buf(0).operation &lt;= '1';
+          request_buf(0).address   &lt;= cpu1_addr;
+          request_buf(0).data      &lt;= cpu1_data_in;
+          request_buf(0).valid     &lt;= '1';
+
+        end if;
+      end if;
+
+    end if;
+  end process;
+
+end architecture behavior;
+</vhdl>
+  <vhdl name="TransactionsBetweenCPU">library ieee;
+use ieee.std_logic_1164.all;
+
+LIBRARY work;
+
+entity TransactionsBetweenCPU is
+  port(
+    clk             : in  std_logic;                    -- system clock
+    rst             : in  std_logic;                    -- synchronous reset
+    cpu0_prio       : in  std_logic;                    -- arbitration priority for CPU0
+    cpu1_prio       : in  std_logic;                    -- arbitration priority for CPU1
+    cpu0_wantedAddr : in  std_logic_vector(2 downto 0); -- CPU0 target address
+    cpu1_wantedAddr : in  std_logic_vector(2 downto 0)  -- CPU1 target address
+  );
+end entity TransactionsBetweenCPU;
+
+architecture bdf_type of TransactionsBetweenCPU is
+
+  -- CPU core component
+  component CPU_Core is
+    port(
+      clk                          : in  std_logic;
+      reset                        : in  std_logic;
+      priority                     : in  std_logic;
+      cpu_wr_req_in                : in  std_logic;
+      cpu_rd_req_in                : in  std_logic;
+      cache_to_cache_resp_in_ready: in  std_logic;
+      cache_to_cache_resp_in       : in  std_logic;
+      cache_to_cache_req_in        : in  std_logic;
+      cache_to_cache_req_address_in: in  std_logic_vector(2 downto 0);
+      cache_to_cache_resp_in_data  : in  std_logic_vector(31 downto 0);
+      cpu_req_addr_in              : in  std_logic_vector(2 downto 0);
+      Sdram_data_in                : in  std_logic_vector(31 downto 0);
+      wantedAddress                : in  std_logic_vector(2 downto 0);
+      read_en                      : out std_logic;
+      write_en                     : out std_logic;
+      cpu_wr_req_out               : out std_logic;
+      cpu_rd_req_out               : out std_logic;
+      cache_to_cache_resp_out_ready: out std_logic;
+      cache_to_cache_resp_out      : out std_logic;
+      cache_to_cache_req_out       : out std_logic;
+      cache_to_cache_req_address_out: out std_logic_vector(2 downto 0);
+      cache_to_cache_resp_out_data : out std_logic_vector(31 downto 0);
+      cpu_req_addr_out             : out std_logic_vector(2 downto 0);
+      Sdram_addr                   : out std_logic_vector(2 downto 0);
+      Sdram_data_out               : out std_logic_vector(31 downto 0)
+    );
+  end component;
+
+
+  -- SDRAM component
+  component sdram is
+    port(
+      clk        : in  std_logic;
+      reset      : in  std_logic;
+      operation1 : in  std_logic;                     -- 0=read, 1=write on port1
+      operation2 : in  std_logic;                     -- 0=read, 1=write on port2
+      ready1     : in  std_logic;                     -- handshake from CPU1
+      ready2     : in  std_logic;                     -- handshake from CPU2
+      addr1      : in  std_logic_vector(2 downto 0);
+      addr2      : in  std_logic_vector(2 downto 0);
+      data_in1   : in  std_logic_vector(31 downto 0); -- CPU→SDRAM data
+      data_in2   : in  std_logic_vector(31 downto 0);
+      data_out1  : out std_logic_vector(31 downto 0); -- SDRAM→CPU data
+      data_out2  : out std_logic_vector(31 downto 0)
+    );
+  end component;
+
+  -- Internal signals for cache‐to‐cache traffic
+  signal cpu0_cache_to_cache_req              : std_logic;
+  signal cpu0_cache_to_cache_req_addr         : std_logic_vector(2 downto 0);
+  signal cpu0_cache_to_cache_resp_data        : std_logic_vector(31 downto 0);
+  signal cpu0_cache_to_cache_response         : std_logic;
+  signal cpu0_cache_to_cache_response_out_ready : std_logic;
+  signal cpu0_wr_req_out                      : std_logic;
+  signal cpu0_rd_req_out                      : std_logic;
+  signal cpu0_req_addr_out                    : std_logic_vector(2 downto 0);
+
+  signal cpu1_cache_to_cache_req              : std_logic;
+  signal cpu1_cache_to_cache_req_addr         : std_logic_vector(2 downto 0);
+  signal cpu1_cache_to_cache_resp_data        : std_logic_vector(31 downto 0);
+  signal cpu1_cache_to_cache_response         : std_logic;
+  signal cpu1_cache_to_cache_response_out_ready : std_logic;
+  signal cpu1_wr_req_out                      : std_logic;
+  signal cpu1_rd_req_out                      : std_logic;
+  signal cpu1_req_addr_out                    : std_logic_vector(2 downto 0);
+
+  -- Read/Write enable flags from each CPU
+  signal r_en1  : std_logic;
+  signal wr_en1 : std_logic;
+  signal r_en2  : std_logic;
+  signal wr_en2 : std_logic;
+
+  -- Combined “ready” lines into SDRAM
+  signal ready1_sig : std_logic;
+  signal ready2_sig : std_logic;
+
+  -- Address buses from CPU → SDRAM
+  signal sdram_addr1 : std_logic_vector(2 downto 0);
+  signal sdram_addr2 : std_logic_vector(2 downto 0);
+
+  -- Data buses CPU → SDRAM
+  signal sdram_data_out1 : std_logic_vector(31 downto 0);
+  signal sdram_data_out2 : std_logic_vector(31 downto 0);
+
+  -- Data buses SDRAM → CPU
+  signal sdram_data_in1  : std_logic_vector(31 downto 0);
+  signal sdram_data_in2  : std_logic_vector(31 downto 0);
+
+begin
+
+  -- Generate “ready” handshake for SDRAM ports
+  ready1_sig &lt;= wr_en1 or r_en1;
+  ready2_sig &lt;= wr_en2 or r_en2;
+
+  -- CPU Core #0 instance
+  core0: CPU_Core
+    port map(
+      clk                            =&gt; clk,
+      reset                          =&gt; rst,
+      priority                       =&gt; cpu0_prio,
+      cpu_wr_req_in                  =&gt; cpu1_wr_req_out,
+      cpu_rd_req_in                  =&gt; cpu1_rd_req_out,
+      cache_to_cache_resp_in_ready   =&gt; cpu1_cache_to_cache_response_out_ready,
+      cache_to_cache_resp_in         =&gt; cpu1_cache_to_cache_response,
+      cache_to_cache_req_in          =&gt; cpu1_cache_to_cache_req,
+      cache_to_cache_req_address_in  =&gt; cpu1_cache_to_cache_req_addr,
+      cache_to_cache_resp_in_data    =&gt; cpu1_cache_to_cache_resp_data,
+      cpu_req_addr_in                =&gt; cpu1_req_addr_out,
+      Sdram_data_in                  =&gt; sdram_data_in1,     -- from SDRAM
+      wantedAddress                  =&gt; cpu0_wantedAddr,
+      read_en                        =&gt; r_en1,
+      write_en                       =&gt; wr_en1,
+      cpu_wr_req_out                 =&gt; cpu0_wr_req_out,
+      cpu_rd_req_out                 =&gt; cpu0_rd_req_out,
+      cache_to_cache_resp_out_ready  =&gt; cpu0_cache_to_cache_response_out_ready,
+      cache_to_cache_resp_out        =&gt; cpu0_cache_to_cache_response,
+      cache_to_cache_req_out         =&gt; cpu0_cache_to_cache_req,
+      cache_to_cache_req_address_out =&gt; cpu0_cache_to_cache_req_addr,
+      cache_to_cache_resp_out_data   =&gt; cpu0_cache_to_cache_resp_data,
+      cpu_req_addr_out               =&gt; cpu0_req_addr_out,
+      Sdram_addr                     =&gt; sdram_addr1,         -- to SDRAM
+      Sdram_data_out                 =&gt; sdram_data_out1      -- to SDRAM
+    );
+
+  -- CPU Core #1 instance
+  core1: CPU_Core
+    port map(
+      clk                            =&gt; clk,
+      reset                          =&gt; rst,
+      priority                       =&gt; cpu1_prio,
+      cpu_wr_req_in                  =&gt; cpu0_wr_req_out,
+      cpu_rd_req_in                  =&gt; cpu0_rd_req_out,
+      cache_to_cache_resp_in_ready   =&gt; cpu0_cache_to_cache_response_out_ready,
+      cache_to_cache_resp_in         =&gt; cpu0_cache_to_cache_response,
+      cache_to_cache_req_in          =&gt; cpu0_cache_to_cache_req,
+      cache_to_cache_req_address_in  =&gt; cpu0_cache_to_cache_req_addr,
+      cache_to_cache_resp_in_data    =&gt; cpu0_cache_to_cache_resp_data,
+      cpu_req_addr_in                =&gt; cpu0_req_addr_out,
+      Sdram_data_in                  =&gt; sdram_data_in2,     -- from SDRAM
+      wantedAddress                  =&gt; cpu1_wantedAddr,
+      read_en                        =&gt; r_en2,
+      write_en                       =&gt; wr_en2,
+      cpu_wr_req_out                 =&gt; cpu1_wr_req_out,
+      cpu_rd_req_out                 =&gt; cpu1_rd_req_out,
+      cache_to_cache_resp_out_ready  =&gt; cpu1_cache_to_cache_response_out_ready,
+      cache_to_cache_resp_out        =&gt; cpu1_cache_to_cache_response,
+      cache_to_cache_req_out         =&gt; cpu1_cache_to_cache_req,
+      cache_to_cache_req_address_out =&gt; cpu1_cache_to_cache_req_addr,
+      cache_to_cache_resp_out_data   =&gt; cpu1_cache_to_cache_resp_data,
+      cpu_req_addr_out               =&gt; cpu1_req_addr_out,
+      Sdram_addr                     =&gt; sdram_addr2,         -- to SDRAM
+      Sdram_data_out                 =&gt; sdram_data_out2      -- to SDRAM
+    );
+
+  -- SDRAM instance (port‐interleaved two‐port memory)
+  sdram0: sdram
+    port map(
+      clk        =&gt; clk,
+      reset      =&gt; rst,
+      operation1 =&gt; wr_en1,           -- write when wr_en1='1'
+      operation2 =&gt; wr_en2,           -- write when wr_en2='1'
+      ready1     =&gt; ready1_sig,
+      ready2     =&gt; ready2_sig,
+      addr1      =&gt; sdram_addr1,
+      addr2      =&gt; sdram_addr2,
+      data_in1   =&gt; sdram_data_out1,  -- CPU0 → SDRAM
+      data_in2   =&gt; sdram_data_out2,  -- CPU1 → SDRAM
+      data_out1  =&gt; sdram_data_in1,   -- SDRAM → CPU0
+      data_out2  =&gt; sdram_data_in2    -- SDRAM → CPU1
+    );
+
+end architecture bdf_type;
 </vhdl>
 </project>
