@@ -2698,6 +2698,17 @@
       <a name="label" val="clk"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
+    <comp lib="0" loc="(1970,600)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="EX_MEM_MemWrite_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(1990,560)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="MEM_WB_RDI"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="5"/>
+    </comp>
     <comp lib="0" loc="(2000,620)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="clk"/>
@@ -2949,6 +2960,15 @@
       <a name="label" val="clk"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
+    <comp lib="0" loc="(3560,950)" name="Tunnel">
+      <a name="label" val="MEM_WB_RDI"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="5"/>
+    </comp>
+    <comp lib="0" loc="(3570,1230)" name="Tunnel">
+      <a name="label" val="MEM_WB_RegWrite"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
     <comp lib="0" loc="(360,200)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="radix" val="16"/>
@@ -3037,11 +3057,6 @@
       <a name="label" val="RD"/>
       <a name="width" val="5"/>
     </comp>
-    <comp lib="4" loc="(1890,650)" name="Register">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="enable_R"/>
-      <a name="width" val="1"/>
-    </comp>
     <comp lib="4" loc="(2150,720)" name="Register">
       <a name="appearance" val="classic"/>
       <a name="label" val="Inm"/>
@@ -3111,7 +3126,7 @@
     </comp>
     <comp lib="4" loc="(3460,920)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
-      <a name="label" val="MEM_WB_RD"/>
+      <a name="label" val="MEM_WB_RDI"/>
       <a name="width" val="5"/>
     </comp>
     <comp lib="4" loc="(3470,1060)" name="Register">
@@ -3238,13 +3253,10 @@
     <wire from="(1850,500)" to="(1980,500)"/>
     <wire from="(1870,520)" to="(1870,560)"/>
     <wire from="(1870,520)" to="(2020,520)"/>
-    <wire from="(1890,650)" to="(1940,650)"/>
     <wire from="(1900,540)" to="(1900,580)"/>
     <wire from="(1900,540)" to="(2020,540)"/>
-    <wire from="(1940,600)" to="(1940,650)"/>
-    <wire from="(1940,600)" to="(2020,600)"/>
-    <wire from="(1980,500)" to="(1980,560)"/>
-    <wire from="(1980,560)" to="(2020,560)"/>
+    <wire from="(1970,600)" to="(2020,600)"/>
+    <wire from="(1990,560)" to="(2020,560)"/>
     <wire from="(1990,840)" to="(2040,840)"/>
     <wire from="(1990,860)" to="(2000,860)"/>
     <wire from="(2000,440)" to="(2000,580)"/>
@@ -3329,7 +3341,9 @@
     <wire from="(350,540)" to="(630,540)"/>
     <wire from="(3520,670)" to="(3670,670)"/>
     <wire from="(3520,820)" to="(3670,820)"/>
+    <wire from="(3520,950)" to="(3560,950)"/>
     <wire from="(3530,1090)" to="(3720,1090)"/>
+    <wire from="(3530,1230)" to="(3570,1230)"/>
     <wire from="(3530,490)" to="(3570,490)"/>
     <wire from="(3570,490)" to="(3570,590)"/>
     <wire from="(360,200)" to="(390,200)"/>
