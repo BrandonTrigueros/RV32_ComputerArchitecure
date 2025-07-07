@@ -25,7 +25,7 @@
   <lib desc="#BFH-Praktika" name="9"/>
   <lib desc="#Input/Output-Extra" name="10"/>
   <lib desc="#Soc" name="11"/>
-  <main name="main"/>
+  <main name="cache_system"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
     <a name="simlimit" val="1000"/>
@@ -58,882 +58,121 @@
     <tool lib="4" name="D Flip-Flop"/>
     <tool lib="4" name="Register"/>
   </toolbar>
-  <circuit name="main">
+  <circuit name="cache_system">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="main"/>
+    <a name="circuit" val="cache_system"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
-    <appear>
-      <circ-anchor facing="east" x="50" y="50"/>
-    </appear>
-  </circuit>
-  <circuit name="test_sdram">
-    <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="test_sdram"/>
-    <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="1.0"/>
-    <comp lib="0" loc="(1020,330)" name="Pin">
+    <comp lib="0" loc="(540,370)" name="Clock"/>
+    <comp lib="0" loc="(540,390)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="DATA_OUT1"/>
-      <a name="output" val="true"/>
-      <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(1020,420)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="DATA_OUT2"/>
-      <a name="output" val="true"/>
-      <a name="width" val="32"/>
+    <comp lib="0" loc="(540,410)" name="Constant"/>
+    <comp lib="0" loc="(540,430)" name="Constant">
+      <a name="value" val="0x0"/>
     </comp>
-    <comp lib="0" loc="(470,570)" name="Pin">
+    <comp lib="0" loc="(540,450)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="DATA_IN1"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(570,330)" name="Clock"/>
-    <comp lib="0" loc="(570,390)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="OPERATION1"/>
-    </comp>
-    <comp lib="0" loc="(570,420)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="OPERATION2"/>
-    </comp>
-    <comp lib="0" loc="(570,450)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="READY1"/>
-    </comp>
-    <comp lib="0" loc="(570,480)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="READY2"/>
-    </comp>
-    <comp lib="0" loc="(570,510)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="ADDR1"/>
-      <a name="radix" val="16"/>
       <a name="width" val="3"/>
     </comp>
-    <comp lib="0" loc="(570,540)" name="Pin">
+    <comp lib="0" loc="(540,470)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="ADDR2"/>
-      <a name="radix" val="16"/>
       <a name="width" val="3"/>
     </comp>
-    <comp lib="0" loc="(630,630)" name="Pin">
+    <comp lib="0" loc="(540,490)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="DATA_IN2"/>
       <a name="radix" val="16"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(950,260)" name="Splitter">
-      <a name="bit1" val="0"/>
-      <a name="bit10" val="2"/>
-      <a name="bit11" val="2"/>
-      <a name="bit12" val="3"/>
-      <a name="bit13" val="3"/>
-      <a name="bit14" val="3"/>
-      <a name="bit15" val="3"/>
-      <a name="bit16" val="4"/>
-      <a name="bit17" val="4"/>
-      <a name="bit18" val="4"/>
-      <a name="bit19" val="4"/>
-      <a name="bit2" val="0"/>
-      <a name="bit20" val="5"/>
-      <a name="bit21" val="5"/>
-      <a name="bit22" val="5"/>
-      <a name="bit23" val="5"/>
-      <a name="bit24" val="6"/>
-      <a name="bit25" val="6"/>
-      <a name="bit26" val="6"/>
-      <a name="bit27" val="6"/>
-      <a name="bit28" val="7"/>
-      <a name="bit29" val="7"/>
-      <a name="bit3" val="0"/>
-      <a name="bit30" val="7"/>
-      <a name="bit31" val="7"/>
-      <a name="bit4" val="1"/>
-      <a name="bit5" val="1"/>
-      <a name="bit6" val="1"/>
-      <a name="bit7" val="1"/>
-      <a name="bit8" val="2"/>
-      <a name="bit9" val="2"/>
-      <a name="facing" val="north"/>
-      <a name="fanout" val="8"/>
-      <a name="incoming" val="32"/>
-      <a name="spacing" val="4"/>
+    <comp lib="0" loc="(540,510)" name="Pin">
+      <a name="appearance" val="classic"/>
     </comp>
-    <comp lib="0" loc="(980,160)" name="Splitter">
-      <a name="bit1" val="0"/>
-      <a name="bit10" val="2"/>
-      <a name="bit11" val="2"/>
-      <a name="bit12" val="3"/>
-      <a name="bit13" val="3"/>
-      <a name="bit14" val="3"/>
-      <a name="bit15" val="3"/>
-      <a name="bit16" val="4"/>
-      <a name="bit17" val="4"/>
-      <a name="bit18" val="4"/>
-      <a name="bit19" val="4"/>
-      <a name="bit2" val="0"/>
-      <a name="bit20" val="5"/>
-      <a name="bit21" val="5"/>
-      <a name="bit22" val="5"/>
-      <a name="bit23" val="5"/>
-      <a name="bit24" val="6"/>
-      <a name="bit25" val="6"/>
-      <a name="bit26" val="6"/>
-      <a name="bit27" val="6"/>
-      <a name="bit28" val="7"/>
-      <a name="bit29" val="7"/>
-      <a name="bit3" val="0"/>
-      <a name="bit30" val="7"/>
-      <a name="bit31" val="7"/>
-      <a name="bit4" val="1"/>
-      <a name="bit5" val="1"/>
-      <a name="bit6" val="1"/>
-      <a name="bit7" val="1"/>
-      <a name="bit8" val="2"/>
-      <a name="bit9" val="2"/>
-      <a name="facing" val="north"/>
-      <a name="fanout" val="8"/>
-      <a name="incoming" val="32"/>
-      <a name="spacing" val="4"/>
+    <comp lib="0" loc="(540,530)" name="Pin">
+      <a name="appearance" val="classic"/>
     </comp>
-    <comp lib="5" loc="(570,360)" name="Button">
-      <a name="label" val="RESET"/>
+    <comp lib="0" loc="(540,550)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="radix" val="16"/>
+      <a name="width" val="32"/>
     </comp>
-    <comp lib="5" loc="(590,320)" name="LED">
-      <a name="facing" val="south"/>
+    <comp lib="0" loc="(540,570)" name="Pin">
+      <a name="appearance" val="classic"/>
     </comp>
-    <comp lib="5" loc="(620,320)" name="LED">
-      <a name="facing" val="south"/>
+    <comp lib="0" loc="(540,590)" name="Pin">
+      <a name="appearance" val="classic"/>
     </comp>
-    <comp lib="5" loc="(660,230)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-      <a name="label" val="hex"/>
+    <comp lib="0" loc="(800,370)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="radix" val="16"/>
+      <a name="width" val="32"/>
     </comp>
-    <comp lib="5" loc="(690,130)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
+    <comp lib="0" loc="(800,410)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="radix" val="16"/>
+      <a name="width" val="32"/>
     </comp>
-    <comp lib="5" loc="(700,230)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-      <a name="label" val="hex_1"/>
+    <comp lib="0" loc="(800,450)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="3"/>
     </comp>
-    <comp lib="5" loc="(730,130)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
+    <comp lib="0" loc="(800,470)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="3"/>
     </comp>
-    <comp lib="5" loc="(740,230)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-      <a name="label" val="hex_2"/>
+    <comp lib="0" loc="(800,490)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="3"/>
     </comp>
-    <comp lib="5" loc="(770,130)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
+    <comp lib="0" loc="(800,510)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="3"/>
     </comp>
-    <comp lib="5" loc="(780,230)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-      <a name="label" val="hex_3"/>
-    </comp>
-    <comp lib="5" loc="(810,130)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-    </comp>
-    <comp lib="5" loc="(820,230)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-      <a name="label" val="hex_4"/>
-    </comp>
-    <comp lib="5" loc="(850,130)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-    </comp>
-    <comp lib="5" loc="(860,230)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-      <a name="label" val="hex_5"/>
-    </comp>
-    <comp lib="5" loc="(890,130)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-    </comp>
-    <comp lib="5" loc="(900,230)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-      <a name="label" val="hex_6"/>
-    </comp>
-    <comp lib="5" loc="(930,130)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-    </comp>
-    <comp lib="5" loc="(940,230)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-      <a name="label" val="hex_7"/>
-    </comp>
-    <comp lib="5" loc="(970,130)" name="Hex Digit Display">
-      <a name="decimalPoint" val="false"/>
-    </comp>
-    <comp loc="(890,370)" name="sdram">
+    <comp lib="5" loc="(800,390)" name="LED"/>
+    <comp lib="5" loc="(800,430)" name="LED"/>
+    <comp lib="5" loc="(800,530)" name="LED"/>
+    <comp lib="5" loc="(800,550)" name="LED"/>
+    <comp lib="5" loc="(800,570)" name="LED"/>
+    <comp lib="5" loc="(800,590)" name="LED"/>
+    <comp loc="(780,370)" name="TransactionsBetweenCPU">
       <a name="appearance" val="logisim_evolution"/>
     </comp>
-    <wire from="(1010,330)" to="(1010,370)"/>
-    <wire from="(1010,330)" to="(1020,330)"/>
-    <wire from="(1010,390)" to="(1010,420)"/>
-    <wire from="(1010,420)" to="(1020,420)"/>
-    <wire from="(470,570)" to="(640,570)"/>
-    <wire from="(570,330)" to="(590,330)"/>
-    <wire from="(570,360)" to="(620,360)"/>
-    <wire from="(570,390)" to="(610,390)"/>
-    <wire from="(570,420)" to="(590,420)"/>
-    <wire from="(570,450)" to="(670,450)"/>
-    <wire from="(570,480)" to="(590,480)"/>
-    <wire from="(570,510)" to="(610,510)"/>
-    <wire from="(570,540)" to="(620,540)"/>
-    <wire from="(590,320)" to="(590,330)"/>
-    <wire from="(590,330)" to="(660,330)"/>
-    <wire from="(590,420)" to="(590,430)"/>
-    <wire from="(590,430)" to="(670,430)"/>
-    <wire from="(590,470)" to="(590,480)"/>
-    <wire from="(590,470)" to="(670,470)"/>
-    <wire from="(610,390)" to="(610,410)"/>
-    <wire from="(610,410)" to="(670,410)"/>
-    <wire from="(610,490)" to="(610,510)"/>
-    <wire from="(610,490)" to="(670,490)"/>
-    <wire from="(620,320)" to="(620,360)"/>
-    <wire from="(620,360)" to="(630,360)"/>
-    <wire from="(620,510)" to="(620,540)"/>
-    <wire from="(620,510)" to="(670,510)"/>
-    <wire from="(630,360)" to="(630,390)"/>
-    <wire from="(630,390)" to="(670,390)"/>
-    <wire from="(630,630)" to="(660,630)"/>
-    <wire from="(640,530)" to="(640,570)"/>
-    <wire from="(640,530)" to="(670,530)"/>
-    <wire from="(660,230)" to="(660,240)"/>
-    <wire from="(660,330)" to="(660,370)"/>
-    <wire from="(660,370)" to="(670,370)"/>
-    <wire from="(660,550)" to="(660,630)"/>
-    <wire from="(660,550)" to="(670,550)"/>
-    <wire from="(690,130)" to="(690,140)"/>
-    <wire from="(700,230)" to="(700,240)"/>
-    <wire from="(730,130)" to="(730,140)"/>
-    <wire from="(740,230)" to="(740,240)"/>
-    <wire from="(770,130)" to="(770,140)"/>
-    <wire from="(780,230)" to="(780,240)"/>
-    <wire from="(810,130)" to="(810,140)"/>
-    <wire from="(820,230)" to="(820,240)"/>
-    <wire from="(850,130)" to="(850,140)"/>
-    <wire from="(860,230)" to="(860,240)"/>
-    <wire from="(890,130)" to="(890,140)"/>
-    <wire from="(890,370)" to="(950,370)"/>
-    <wire from="(890,390)" to="(980,390)"/>
-    <wire from="(900,230)" to="(900,240)"/>
-    <wire from="(930,130)" to="(930,140)"/>
-    <wire from="(940,230)" to="(940,240)"/>
-    <wire from="(950,260)" to="(950,370)"/>
-    <wire from="(950,370)" to="(1010,370)"/>
-    <wire from="(970,130)" to="(970,140)"/>
-    <wire from="(980,160)" to="(980,390)"/>
-    <wire from="(980,390)" to="(1010,390)"/>
+    <wire from="(540,370)" to="(560,370)"/>
+    <wire from="(540,390)" to="(560,390)"/>
+    <wire from="(540,410)" to="(560,410)"/>
+    <wire from="(540,430)" to="(560,430)"/>
+    <wire from="(540,450)" to="(560,450)"/>
+    <wire from="(540,470)" to="(560,470)"/>
+    <wire from="(540,490)" to="(560,490)"/>
+    <wire from="(540,510)" to="(560,510)"/>
+    <wire from="(540,530)" to="(560,530)"/>
+    <wire from="(540,550)" to="(560,550)"/>
+    <wire from="(540,570)" to="(560,570)"/>
+    <wire from="(540,590)" to="(560,590)"/>
+    <wire from="(780,370)" to="(800,370)"/>
+    <wire from="(780,390)" to="(800,390)"/>
+    <wire from="(780,410)" to="(800,410)"/>
+    <wire from="(780,430)" to="(800,430)"/>
+    <wire from="(780,450)" to="(800,450)"/>
+    <wire from="(780,470)" to="(800,470)"/>
+    <wire from="(780,490)" to="(800,490)"/>
+    <wire from="(780,510)" to="(800,510)"/>
+    <wire from="(780,530)" to="(800,530)"/>
+    <wire from="(780,550)" to="(800,550)"/>
+    <wire from="(780,570)" to="(800,570)"/>
+    <wire from="(780,590)" to="(800,590)"/>
   </circuit>
-  <circuit name="test_cache_controller">
-    <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="test_cache_controller"/>
-    <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="1.0"/>
-    <comp lib="0" loc="(1390,1030)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line3_state"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-    </comp>
-    <comp lib="0" loc="(1390,790)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line0_state"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-    </comp>
-    <comp lib="0" loc="(1390,870)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line1_state"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-    </comp>
-    <comp lib="0" loc="(1390,950)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line2_state"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-    </comp>
-    <comp lib="0" loc="(1420,1050)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line3_addr"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1420,810)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line0_addr"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1420,890)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line1_addr"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1420,970)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line2_addr"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1460,1070)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line3_data"/>
-      <a name="output" val="true"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(1460,830)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line0_data"/>
-      <a name="output" val="true"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(1460,910)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line1_data"/>
-      <a name="output" val="true"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(1460,990)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_line2_data"/>
-      <a name="output" val="true"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(1470,160)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="Sdram_addr"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1480,330)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="cpu_req_addr_out"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1510,180)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="Sdram_data_out"/>
-      <a name="output" val="true"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(1550,630)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cpu_state"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1590,650)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cache_state"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1660,690)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_current_addr"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1730,400)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="cache_to_cache_req_address_out"/>
-      <a name="output" val="true"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(1740,460)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="cache_to_cache_resp_out_data"/>
-      <a name="output" val="true"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(1760,730)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_evict_index"/>
-      <a name="output" val="true"/>
-      <a name="width" val="2"/>
-    </comp>
-    <comp lib="0" loc="(1800,750)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="debug_cycle_counter"/>
-      <a name="output" val="true"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="4"/>
-    </comp>
-    <comp lib="0" loc="(690,530)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="cpu_req_addr_in"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(700,790)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="cache_to_cache_resp_in_data"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(740,350)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="Sdram_data_in"/>
-      <a name="radix" val="16"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(740,730)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="cache_to_cache_req_address_in"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(750,510)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="cpu_rd_req_in"/>
-    </comp>
-    <comp lib="0" loc="(780,490)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="cpu_wr_req_in"/>
-    </comp>
-    <comp lib="0" loc="(790,330)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="wantedAddress"/>
-      <a name="width" val="3"/>
-    </comp>
-    <comp lib="0" loc="(800,770)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="cache_to_cache_resp_in_ready"/>
-    </comp>
-    <comp lib="0" loc="(830,710)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="cache_to_cache_req_in"/>
-    </comp>
-    <comp lib="0" loc="(830,750)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="cache_to_cache_resp_in"/>
-    </comp>
-    <comp lib="0" loc="(880,270)" name="Clock">
-      <a name="label" val="clk"/>
-    </comp>
-    <comp lib="0" loc="(880,310)" name="Pin">
-      <a name="appearance" val="classic"/>
-      <a name="label" val="priority"/>
-    </comp>
-    <comp lib="5" loc="(1360,1010)" name="LED">
-      <a name="label" val="debug_cache_line3_valid"/>
-    </comp>
-    <comp lib="5" loc="(1360,770)" name="LED">
-      <a name="label" val="debug_cache_line0_valid"/>
-    </comp>
-    <comp lib="5" loc="(1360,850)" name="LED">
-      <a name="label" val="debug_cache_line1_valid"/>
-    </comp>
-    <comp lib="5" loc="(1360,930)" name="LED">
-      <a name="label" val="debug_cache_line2_valid"/>
-    </comp>
-    <comp lib="5" loc="(1420,120)" name="LED">
-      <a name="label" val="read_en"/>
-    </comp>
-    <comp lib="5" loc="(1430,290)" name="LED">
-      <a name="label" val="cpu_wr_req_out"/>
-    </comp>
-    <comp lib="5" loc="(1440,140)" name="LED">
-      <a name="label" val="write_en"/>
-    </comp>
-    <comp lib="5" loc="(1450,310)" name="LED">
-      <a name="label" val="cpu_rd_req_out"/>
-    </comp>
-    <comp lib="5" loc="(1630,670)" name="LED">
-      <a name="label" val="debug_cache_hit"/>
-    </comp>
-    <comp lib="5" loc="(1700,380)" name="LED">
-      <a name="label" val="cache_to_cache_req_out"/>
-    </comp>
-    <comp lib="5" loc="(1700,420)" name="LED">
-      <a name="label" val="cache_to_cache_resp_out"/>
-    </comp>
-    <comp lib="5" loc="(1720,440)" name="LED">
-      <a name="label" val="cache_to_cache_resp_out_ready"/>
-    </comp>
-    <comp lib="5" loc="(1720,710)" name="LED">
-      <a name="label" val="debug_operation_type"/>
-    </comp>
-    <comp lib="5" loc="(850,290)" name="Button">
-      <a name="label" val="reset"/>
-    </comp>
-    <comp loc="(1220,390)" name="Cache_Controller">
-      <a name="appearance" val="logisim_evolution"/>
-    </comp>
-    <wire from="(1220,1010)" to="(1360,1010)"/>
-    <wire from="(1220,1030)" to="(1390,1030)"/>
-    <wire from="(1220,1050)" to="(1420,1050)"/>
-    <wire from="(1220,1070)" to="(1460,1070)"/>
-    <wire from="(1220,390)" to="(1240,390)"/>
-    <wire from="(1220,410)" to="(1270,410)"/>
-    <wire from="(1220,430)" to="(1300,430)"/>
-    <wire from="(1220,450)" to="(1330,450)"/>
-    <wire from="(1220,470)" to="(1420,470)"/>
-    <wire from="(1220,490)" to="(1440,490)"/>
-    <wire from="(1220,510)" to="(1470,510)"/>
-    <wire from="(1220,530)" to="(1650,530)"/>
-    <wire from="(1220,550)" to="(1670,550)"/>
-    <wire from="(1220,570)" to="(1690,570)"/>
-    <wire from="(1220,590)" to="(1710,590)"/>
-    <wire from="(1220,610)" to="(1730,610)"/>
-    <wire from="(1220,630)" to="(1550,630)"/>
-    <wire from="(1220,650)" to="(1590,650)"/>
-    <wire from="(1220,670)" to="(1630,670)"/>
-    <wire from="(1220,690)" to="(1660,690)"/>
-    <wire from="(1220,710)" to="(1720,710)"/>
-    <wire from="(1220,730)" to="(1760,730)"/>
-    <wire from="(1220,750)" to="(1800,750)"/>
-    <wire from="(1220,770)" to="(1360,770)"/>
-    <wire from="(1220,790)" to="(1390,790)"/>
-    <wire from="(1220,810)" to="(1420,810)"/>
-    <wire from="(1220,830)" to="(1460,830)"/>
-    <wire from="(1220,850)" to="(1360,850)"/>
-    <wire from="(1220,870)" to="(1390,870)"/>
-    <wire from="(1220,890)" to="(1420,890)"/>
-    <wire from="(1220,910)" to="(1460,910)"/>
-    <wire from="(1220,930)" to="(1360,930)"/>
-    <wire from="(1220,950)" to="(1390,950)"/>
-    <wire from="(1220,970)" to="(1420,970)"/>
-    <wire from="(1220,990)" to="(1460,990)"/>
-    <wire from="(1240,120)" to="(1240,390)"/>
-    <wire from="(1240,120)" to="(1420,120)"/>
-    <wire from="(1270,140)" to="(1270,410)"/>
-    <wire from="(1270,140)" to="(1440,140)"/>
-    <wire from="(1300,160)" to="(1300,430)"/>
-    <wire from="(1300,160)" to="(1470,160)"/>
-    <wire from="(1330,180)" to="(1330,450)"/>
-    <wire from="(1330,180)" to="(1510,180)"/>
-    <wire from="(1420,290)" to="(1420,470)"/>
-    <wire from="(1420,290)" to="(1430,290)"/>
-    <wire from="(1440,310)" to="(1440,490)"/>
-    <wire from="(1440,310)" to="(1450,310)"/>
-    <wire from="(1470,330)" to="(1470,510)"/>
-    <wire from="(1470,330)" to="(1480,330)"/>
-    <wire from="(1650,380)" to="(1650,530)"/>
-    <wire from="(1650,380)" to="(1700,380)"/>
-    <wire from="(1670,400)" to="(1670,550)"/>
-    <wire from="(1670,400)" to="(1730,400)"/>
-    <wire from="(1690,420)" to="(1690,570)"/>
-    <wire from="(1690,420)" to="(1700,420)"/>
-    <wire from="(1710,440)" to="(1710,590)"/>
-    <wire from="(1710,440)" to="(1720,440)"/>
-    <wire from="(1730,460)" to="(1730,610)"/>
-    <wire from="(1730,460)" to="(1740,460)"/>
-    <wire from="(690,530)" to="(1000,530)"/>
-    <wire from="(700,790)" to="(890,790)"/>
-    <wire from="(740,350)" to="(900,350)"/>
-    <wire from="(740,730)" to="(860,730)"/>
-    <wire from="(750,510)" to="(1000,510)"/>
-    <wire from="(780,490)" to="(1000,490)"/>
-    <wire from="(790,330)" to="(910,330)"/>
-    <wire from="(800,770)" to="(880,770)"/>
-    <wire from="(830,710)" to="(850,710)"/>
-    <wire from="(830,750)" to="(870,750)"/>
-    <wire from="(850,290)" to="(930,290)"/>
-    <wire from="(850,550)" to="(1000,550)"/>
-    <wire from="(850,550)" to="(850,710)"/>
-    <wire from="(860,570)" to="(1000,570)"/>
-    <wire from="(860,570)" to="(860,730)"/>
-    <wire from="(870,590)" to="(1000,590)"/>
-    <wire from="(870,590)" to="(870,750)"/>
-    <wire from="(880,270)" to="(940,270)"/>
-    <wire from="(880,310)" to="(920,310)"/>
-    <wire from="(880,610)" to="(1000,610)"/>
-    <wire from="(880,610)" to="(880,770)"/>
-    <wire from="(890,630)" to="(1000,630)"/>
-    <wire from="(890,630)" to="(890,790)"/>
-    <wire from="(900,350)" to="(900,470)"/>
-    <wire from="(900,470)" to="(1000,470)"/>
-    <wire from="(910,330)" to="(910,450)"/>
-    <wire from="(910,450)" to="(1000,450)"/>
-    <wire from="(920,310)" to="(920,430)"/>
-    <wire from="(920,430)" to="(1000,430)"/>
-    <wire from="(930,290)" to="(930,410)"/>
-    <wire from="(930,410)" to="(1000,410)"/>
-    <wire from="(940,270)" to="(940,390)"/>
-    <wire from="(940,390)" to="(1000,390)"/>
-  </circuit>
-  <circuit name="test_fifo">
-    <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="test_fifo"/>
-    <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="1.0"/>
-    <comp loc="(920,460)" name="FIFO">
-      <a name="appearance" val="logisim_evolution"/>
-    </comp>
-  </circuit>
-  <vhdl name="msi_protocol">
-library ieee;&#13;
-use ieee.std_logic_1164.all;&#13;
-use ieee.numeric_std.all;&#13;
-&#13;
-entity msi_protocol is&#13;
-    port (&#13;
-        clk             : in std_logic;&#13;
-        reset           : in std_logic;&#13;
-        cpu0_state      : in std_logic_vector(1 downto 0); -- MSI state for cpu0&#13;
-        cpu1_state      : in std_logic_vector(1 downto 0); -- MSI state for cpu1&#13;
-        cpu0_addr       : in std_logic_vector(31 downto 0);   -- Address from cpu0&#13;
-        cpu1_addr       : in std_logic_vector(31 downto 0);   -- Address from cpu1&#13;
-        invalidate_cpu0 : out std_logic;                      -- Invalidate signal for cpu0&#13;
-        invalidate_cpu1 : out std_logic                       -- Invalidate signal for cpu1&#13;
-    );&#13;
-end msi_protocol;&#13;
-&#13;
-architecture Behavioral of msi_protocol is&#13;
-begin&#13;
-    process(clk, reset)&#13;
-    begin&#13;
-        if reset = '1' then&#13;
-            invalidate_cpu0 &lt;= '0';&#13;
-            invalidate_cpu1 &lt;= '0';&#13;
-        elsif rising_edge(clk) then&#13;
-            -- If CPU0 modifies a cache line, invalidate the corresponding line in CPU1&#13;
-            if cpu0_state = "10" then -- Modified state in cpu0&#13;
-                if cpu1_state = "01" and cpu0_addr = cpu1_addr then -- Shared state in cpu1 for the same address&#13;
-                    invalidate_cpu1 &lt;= '1'; -- Invalidate the cache line in cpu1&#13;
-                else&#13;
-                    invalidate_cpu1 &lt;= '0';&#13;
-                end if;&#13;
-            end if;&#13;
-            &#13;
-            -- If CPU1 modifies a cache line, invalidate the corresponding line in CPU0&#13;
-            if cpu1_state = "10" then -- Modified state in cpu1&#13;
-                if cpu0_state = "01" and cpu1_addr = cpu0_addr then -- Shared state in cpu0 for the same address&#13;
-                    invalidate_cpu0 &lt;= '1'; -- Invalidate the cache line in cpu0&#13;
-                else&#13;
-                    invalidate_cpu0 &lt;= '0';&#13;
-                end if;&#13;
-            end if;&#13;
-        end if;&#13;
-    end process;&#13;
-end Behavioral;&#13;</vhdl>
-  <vhdl name="FIFO">
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-
-entity FIFO is
-  port(
-    clk            : in  std_logic;	-- system clock
-    rst            : in  std_logic;	-- synchronous reset
-
-    -- CPU0 interface
-    cpu0_read_in   : in  std_logic;					-- CPU0 read request (1 = read)
-    cpu0_write_in  : in  std_logic;					-- CPU0 write request (1 = write)
-    cpu0_data_in   : in  std_logic_vector(31 downto 0);	-- CPU0 write data
-    cpu0_addr      : in  std_logic_vector(2 downto 0);	-- CPU0 address
-
-    -- CPU1 interface
-    cpu1_read_in   : in  std_logic;
-    cpu1_write_in  : in  std_logic;
-    cpu1_data_in   : in  std_logic_vector(31 downto 0);
-    cpu1_addr      : in  std_logic_vector(2 downto 0);
-
-    -- Output to SDRAM
-    read_out       : out std_logic;	-- 1 = perform read
-    write_out      : out std_logic;	-- 1 = perform write
-
-    addr_out       : out std_logic_vector(2 downto 0);	-- address to SDRAM
-    data_out       : out std_logic_vector(31 downto 0)	-- data to SDRAM (for writes)
-  );
-end entity FIFO;
-
-architecture behavior of FIFO is
-  -- record and array _types_
-  type sdramrequest is record
-    requester : std_logic;			-- '0' = CPU0, '1' = CPU1
-    operation : std_logic;            	-- 0 = read, 1 = write
-    address   : std_logic_vector(2 downto 0);
-    data      : std_logic_vector(31 downto 0);
-    valid     : std_logic;
-  end record sdramrequest;
-
-  -- circular buffer of 1024 requests
-  type sdramRequestBuffer is array(0 to 1023) of sdramrequest;
-
-  -- allocate the buffer signal 
-  signal request_buf : sdramRequestBuffer := (
-    others =&gt; (
-      requester =&gt; '0',
-      operation =&gt; '0',
-      address   =&gt; (others =&gt; '0'),
-      data      =&gt; (others =&gt; '0'),
-      valid     =&gt; '0'
-    )
-  );
-
-  -- track which CPU was last served 
-  signal previousRequester : std_logic;  -- 0 is cpu0, 1 is cpu1
-
-begin
-
-  process(clk, rst)
-  begin
-    if rst = '1' then
-    	 -- synchronous reset: clear buffer and outputs
-      -- clear buffer on reset
-      request_buf &lt;= (others =&gt; (
-        requester =&gt; '0',
-        operation =&gt; '0',
-        address   =&gt; (others =&gt; '0'),
-        data      =&gt; (others =&gt; '0'),
-        valid     =&gt; '0'
-      ));
-      read_out  &lt;= '0';
-      write_out &lt;= '0';
-      previousRequester &lt;= '0';
-
-    elsif rising_edge(clk) then
-
-    	 -- if there’s a pending SDRAM request at buffer slot 0
-      if request_buf(0).valid = '1' then
-        -- dequeue slot 0
-        read_out  &lt;= not request_buf(0).operation;
-        write_out &lt;=     request_buf(0).operation;
-        addr_out  &lt;=     request_buf(0).address;
-        data_out  &lt;=     request_buf(0).data;
-
-        -- once served, invalidate this slot
-        request_buf(0).valid &lt;= '0';
-
-      else
-      -- buffer is empty → directly arbitrate between CPU0 &amp; CPU1
-
-        -- 1) No requests from either CPU
-        if cpu0_read_in='0' and cpu0_write_in='0'
-           and cpu1_read_in='0' and cpu1_write_in='0' then
-
-          read_out  &lt;= '0';
-          write_out &lt;= '0';
-
-        -- 2) CPU1 wants to write only
-        elsif cpu0_read_in='0' and cpu0_write_in='0'
-           and cpu1_read_in='0' and cpu1_write_in='1' then
-
-          read_out          &lt;= '0';
-          write_out         &lt;= '1';
-          previousRequester &lt;= '1';
-
-        -- 3) CPU1 wants to read only
-        elsif cpu0_read_in='0' and cpu0_write_in='0'
-           and cpu1_read_in='1' and cpu1_write_in='0' then
-
-          read_out          &lt;= '1';
-          write_out         &lt;= '0';
-          previousRequester &lt;= '1';
-
-        -- 4) CPU0 wants to write only
-        elsif cpu0_read_in='0' and cpu0_write_in='1'
-           and cpu1_read_in='0' and cpu1_write_in='0' then
-
-          read_out          &lt;= '0';
-          write_out         &lt;= '1';
-          previousRequester &lt;= '0';
-
-        -- 5) CPU0 wants to read only
-        elsif cpu0_read_in='1' and cpu0_write_in='0'
-           and cpu1_read_in='0' and cpu1_write_in='0' then
-
-          read_out          &lt;= '1';
-          write_out         &lt;= '0';
-          previousRequester &lt;= '0';
-
-        -- 6) Both CPUs want to read → enqueue CPU1’s read
-        elsif cpu0_read_in='1' and cpu0_write_in='0'
-           and cpu1_read_in='1' and cpu1_write_in='0' then
-
-          read_out          &lt;= '1';
-          write_out         &lt;= '0';
-          previousRequester &lt;= '0';
-
-          request_buf(0).requester &lt;= '1';        -- from CPU1
-          request_buf(0).operation &lt;= '0';        -- read
-          request_buf(0).address   &lt;= cpu1_addr;
-          request_buf(0).valid     &lt;= '1';
-
-        -- 7) CPU0 read &amp; CPU1 write → enqueue CPU1’s write
-        elsif cpu0_read_in='1' and cpu0_write_in='0'
-           and cpu1_read_in='0' and cpu1_write_in='1' then
-
-          read_out          &lt;= '1';
-          write_out         &lt;= '0';
-          previousRequester &lt;= '0';
-
-          request_buf(0).requester &lt;= '1';
-          request_buf(0).operation &lt;= '1';        -- write
-          request_buf(0).address   &lt;= cpu1_addr;
-          request_buf(0).data      &lt;= cpu1_data_in;
-          request_buf(0).valid     &lt;= '1';
-
-        -- 8) CPU0 write &amp; CPU1 read → enqueue CPU1’s read
-        elsif cpu0_read_in='0' and cpu0_write_in='1'
-           and cpu1_read_in='1' and cpu1_write_in='0' then
-
-          read_out          &lt;= '0';
-          write_out         &lt;= '1';
-          previousRequester &lt;= '0';
-
-          request_buf(0).requester &lt;= '1';
-          request_buf(0).operation &lt;= '0';        -- read
-          request_buf(0).address   &lt;= cpu1_addr;
-          request_buf(0).valid     &lt;= '1';
-
-        -- 9) Both CPUs want to write → enqueue CPU1’s write
-        elsif cpu0_read_in='0' and cpu0_write_in='1'
-           and cpu1_read_in='0' and cpu1_write_in='1' then
-
-          read_out          &lt;= '0';
-          write_out         &lt;= '1';
-          previousRequester &lt;= '0';
-
-          request_buf(0).requester &lt;= '1';
-          request_buf(0).operation &lt;= '1';
-          request_buf(0).address   &lt;= cpu1_addr;
-          request_buf(0).data      &lt;= cpu1_data_in;
-          request_buf(0).valid     &lt;= '1';
-
-        end if;
-      end if;
-
-    end if;
-  end process;
-
-end architecture behavior;
-</vhdl>
   <vhdl name="TransactionsBetweenCPU">
 library ieee;
 use ieee.std_logic_1164.all;
@@ -947,7 +186,31 @@ entity TransactionsBetweenCPU is
     cpu0_prio       : in  std_logic;                    -- arbitration priority for CPU0
     cpu1_prio       : in  std_logic;                    -- arbitration priority for CPU1
     cpu0_wantedAddr : in  std_logic_vector(2 downto 0); -- CPU0 target address
-    cpu1_wantedAddr : in  std_logic_vector(2 downto 0)  -- CPU1 target address
+    cpu1_wantedAddr : in  std_logic_vector(2 downto 0); -- CPU1 target address
+    
+    -- CPU0 interface signals
+    cpu0_data_in    : in  std_logic_vector(31 downto 0); -- CPU0 data for write
+    cpu0_data_out   : out std_logic_vector(31 downto 0); -- CPU0 data read
+    cpu0_req        : in  std_logic;                     -- CPU0 request
+    cpu0_rw         : in  std_logic;                     -- CPU0 read/write
+    cpu0_ready      : out std_logic;                     -- CPU0 operation complete
+    
+    -- CPU1 interface signals
+    cpu1_data_in    : in  std_logic_vector(31 downto 0); -- CPU1 data for write
+    cpu1_data_out   : out std_logic_vector(31 downto 0); -- CPU1 data read
+    cpu1_req        : in  std_logic;                     -- CPU1 request
+    cpu1_rw         : in  std_logic;                     -- CPU1 read/write
+    cpu1_ready      : out std_logic;                     -- CPU1 operation complete
+    
+    -- DEBUG OUTPUTS
+    debug_cpu0_state     : out std_logic_vector(2 downto 0); -- CPU0 state for debug
+    debug_cpu1_state     : out std_logic_vector(2 downto 0); -- CPU1 state for debug
+    debug_cache0_state   : out std_logic_vector(2 downto 0); -- Cache0 state for debug
+    debug_cache1_state   : out std_logic_vector(2 downto 0); -- Cache1 state for debug
+    debug_sdram_ready    : out std_logic;                    -- SDRAM ready flag
+    debug_cpu0_hit       : out std_logic;                    -- CPU0 cache hit
+    debug_cpu1_hit       : out std_logic;                    -- CPU1 cache hit
+    debug_reset_active   : out std_logic                     -- Reset status
   );
 end entity TransactionsBetweenCPU;
 
@@ -959,18 +222,28 @@ architecture bdf_type of TransactionsBetweenCPU is
       clk                          : in  std_logic;
       reset                        : in  std_logic;
       priority                     : in  std_logic;
+      -- CPU interface signals
+      wantedAddress                : in  std_logic_vector(2 downto 0);
+      cpu_data_in                  : in  std_logic_vector(31 downto 0);
+      cpu_data_out                 : out std_logic_vector(31 downto 0);
+      cpu_req                      : in  std_logic;
+      cpu_rw                       : in  std_logic;
+      cpu_ready                    : out std_logic;
+      -- SDRAM interface
+      read_en                      : out std_logic;
+      write_en                     : out std_logic;
+      Sdram_addr                   : out std_logic_vector(2 downto 0);
+      Sdram_data_in                : in  std_logic_vector(31 downto 0);
+      Sdram_data_out               : out std_logic_vector(31 downto 0);
+      -- MSI protocol signals
       cpu_wr_req_in                : in  std_logic;
       cpu_rd_req_in                : in  std_logic;
-      cache_to_cache_resp_in_ready: in  std_logic;
+      cache_to_cache_resp_in_ready : in  std_logic;
       cache_to_cache_resp_in       : in  std_logic;
       cache_to_cache_req_in        : in  std_logic;
       cache_to_cache_req_address_in: in  std_logic_vector(2 downto 0);
       cache_to_cache_resp_in_data  : in  std_logic_vector(31 downto 0);
       cpu_req_addr_in              : in  std_logic_vector(2 downto 0);
-      Sdram_data_in                : in  std_logic_vector(31 downto 0);
-      wantedAddress                : in  std_logic_vector(2 downto 0);
-      read_en                      : out std_logic;
-      write_en                     : out std_logic;
       cpu_wr_req_out               : out std_logic;
       cpu_rd_req_out               : out std_logic;
       cache_to_cache_resp_out_ready: out std_logic;
@@ -979,8 +252,10 @@ architecture bdf_type of TransactionsBetweenCPU is
       cache_to_cache_req_address_out: out std_logic_vector(2 downto 0);
       cache_to_cache_resp_out_data : out std_logic_vector(31 downto 0);
       cpu_req_addr_out             : out std_logic_vector(2 downto 0);
-      Sdram_addr                   : out std_logic_vector(2 downto 0);
-      Sdram_data_out               : out std_logic_vector(31 downto 0)
+      -- DEBUG OUTPUTS
+      debug_cpu_state              : out std_logic_vector(2 downto 0);
+      debug_cache_state            : out std_logic_vector(2 downto 0);
+      debug_cache_hit              : out std_logic
     );
   end component;
 
@@ -999,7 +274,9 @@ architecture bdf_type of TransactionsBetweenCPU is
       data_in1   : in  std_logic_vector(31 downto 0); -- CPU→SDRAM data
       data_in2   : in  std_logic_vector(31 downto 0);
       data_out1  : out std_logic_vector(31 downto 0); -- SDRAM→CPU data
-      data_out2  : out std_logic_vector(31 downto 0)
+      data_out2  : out std_logic_vector(31 downto 0);
+      -- DEBUG OUTPUT
+      debug_sdram_ready : out std_logic
     );
   end component;
 
@@ -1044,9 +321,28 @@ architecture bdf_type of TransactionsBetweenCPU is
   signal sdram_data_in1  : std_logic_vector(31 downto 0);
   signal sdram_data_in2  : std_logic_vector(31 downto 0);
 
+  -- DEBUG SIGNALS
+  signal debug_cpu0_state_int   : std_logic_vector(2 downto 0);
+  signal debug_cpu1_state_int   : std_logic_vector(2 downto 0);
+  signal debug_cache0_state_int : std_logic_vector(2 downto 0);
+  signal debug_cache1_state_int : std_logic_vector(2 downto 0);
+  signal debug_sdram_ready_int  : std_logic;
+  signal debug_cpu0_hit_int     : std_logic;
+  signal debug_cpu1_hit_int     : std_logic;
+
 begin
 
-  -- Generate “ready” handshake for SDRAM ports
+  -- DEBUG OUTPUT ASSIGNMENTS
+debug_cpu0_state     &lt;= debug_cpu0_state_int;
+debug_cpu1_state     &lt;= debug_cpu1_state_int;
+debug_cache0_state   &lt;= debug_cache0_state_int;
+debug_cache1_state   &lt;= debug_cache1_state_int;
+debug_sdram_ready    &lt;= debug_sdram_ready_int;
+debug_cpu0_hit       &lt;= debug_cpu0_hit_int;
+debug_cpu1_hit       &lt;= debug_cpu1_hit_int;
+debug_reset_active   &lt;= rst;
+
+  -- Generate "ready" handshake for SDRAM ports
   ready1_sig &lt;= wr_en1 or r_en1;
   ready2_sig &lt;= wr_en2 or r_en2;
 
@@ -1056,6 +352,20 @@ begin
       clk                            =&gt; clk,
       reset                          =&gt; rst,
       priority                       =&gt; cpu0_prio,
+      -- CPU interface
+      wantedAddress                  =&gt; cpu0_wantedAddr,
+      cpu_data_in                    =&gt; cpu0_data_in,
+      cpu_data_out                   =&gt; cpu0_data_out,
+      cpu_req                        =&gt; cpu0_req,
+      cpu_rw                         =&gt; cpu0_rw,
+      cpu_ready                      =&gt; cpu0_ready,
+      -- SDRAM interface
+      read_en                        =&gt; r_en1,
+      write_en                       =&gt; wr_en1,
+      Sdram_addr                     =&gt; sdram_addr1,
+      Sdram_data_in                  =&gt; sdram_data_in1,
+      Sdram_data_out                 =&gt; sdram_data_out1,
+      -- MSI protocol
       cpu_wr_req_in                  =&gt; cpu1_wr_req_out,
       cpu_rd_req_in                  =&gt; cpu1_rd_req_out,
       cache_to_cache_resp_in_ready   =&gt; cpu1_cache_to_cache_response_out_ready,
@@ -1064,10 +374,6 @@ begin
       cache_to_cache_req_address_in  =&gt; cpu1_cache_to_cache_req_addr,
       cache_to_cache_resp_in_data    =&gt; cpu1_cache_to_cache_resp_data,
       cpu_req_addr_in                =&gt; cpu1_req_addr_out,
-      Sdram_data_in                  =&gt; sdram_data_in1,     -- from SDRAM
-      wantedAddress                  =&gt; cpu0_wantedAddr,
-      read_en                        =&gt; r_en1,
-      write_en                       =&gt; wr_en1,
       cpu_wr_req_out                 =&gt; cpu0_wr_req_out,
       cpu_rd_req_out                 =&gt; cpu0_rd_req_out,
       cache_to_cache_resp_out_ready  =&gt; cpu0_cache_to_cache_response_out_ready,
@@ -1076,8 +382,10 @@ begin
       cache_to_cache_req_address_out =&gt; cpu0_cache_to_cache_req_addr,
       cache_to_cache_resp_out_data   =&gt; cpu0_cache_to_cache_resp_data,
       cpu_req_addr_out               =&gt; cpu0_req_addr_out,
-      Sdram_addr                     =&gt; sdram_addr1,         -- to SDRAM
-      Sdram_data_out                 =&gt; sdram_data_out1      -- to SDRAM
+      -- DEBUG
+      debug_cpu_state                =&gt; debug_cpu0_state_int,
+      debug_cache_state              =&gt; debug_cache0_state_int,
+      debug_cache_hit                =&gt; debug_cpu0_hit_int
     );
 
   -- CPU Core #1 instance
@@ -1086,6 +394,20 @@ begin
       clk                            =&gt; clk,
       reset                          =&gt; rst,
       priority                       =&gt; cpu1_prio,
+      -- CPU interface
+      wantedAddress                  =&gt; cpu1_wantedAddr,
+      cpu_data_in                    =&gt; cpu1_data_in,
+      cpu_data_out                   =&gt; cpu1_data_out,
+      cpu_req                        =&gt; cpu1_req,
+      cpu_rw                         =&gt; cpu1_rw,
+      cpu_ready                      =&gt; cpu1_ready,
+      -- SDRAM interface
+      read_en                        =&gt; r_en2,
+      write_en                       =&gt; wr_en2,
+      Sdram_addr                     =&gt; sdram_addr2,
+      Sdram_data_in                  =&gt; sdram_data_in2,
+      Sdram_data_out                 =&gt; sdram_data_out2,
+      -- MSI protocol
       cpu_wr_req_in                  =&gt; cpu0_wr_req_out,
       cpu_rd_req_in                  =&gt; cpu0_rd_req_out,
       cache_to_cache_resp_in_ready   =&gt; cpu0_cache_to_cache_response_out_ready,
@@ -1094,10 +416,6 @@ begin
       cache_to_cache_req_address_in  =&gt; cpu0_cache_to_cache_req_addr,
       cache_to_cache_resp_in_data    =&gt; cpu0_cache_to_cache_resp_data,
       cpu_req_addr_in                =&gt; cpu0_req_addr_out,
-      Sdram_data_in                  =&gt; sdram_data_in2,     -- from SDRAM
-      wantedAddress                  =&gt; cpu1_wantedAddr,
-      read_en                        =&gt; r_en2,
-      write_en                       =&gt; wr_en2,
       cpu_wr_req_out                 =&gt; cpu1_wr_req_out,
       cpu_rd_req_out                 =&gt; cpu1_rd_req_out,
       cache_to_cache_resp_out_ready  =&gt; cpu1_cache_to_cache_response_out_ready,
@@ -1106,8 +424,10 @@ begin
       cache_to_cache_req_address_out =&gt; cpu1_cache_to_cache_req_addr,
       cache_to_cache_resp_out_data   =&gt; cpu1_cache_to_cache_resp_data,
       cpu_req_addr_out               =&gt; cpu1_req_addr_out,
-      Sdram_addr                     =&gt; sdram_addr2,         -- to SDRAM
-      Sdram_data_out                 =&gt; sdram_data_out2      -- to SDRAM
+      -- DEBUG
+      debug_cpu_state                =&gt; debug_cpu1_state_int,
+      debug_cache_state              =&gt; debug_cache1_state_int,
+      debug_cache_hit                =&gt; debug_cpu1_hit_int
     );
 
   -- SDRAM instance (port‐interleaved two‐port memory)
@@ -1124,7 +444,8 @@ begin
       data_in1   =&gt; sdram_data_out1,  -- CPU0 → SDRAM
       data_in2   =&gt; sdram_data_out2,  -- CPU1 → SDRAM
       data_out1  =&gt; sdram_data_in1,   -- SDRAM → CPU0
-      data_out2  =&gt; sdram_data_in2    -- SDRAM → CPU1
+      data_out2  =&gt; sdram_data_in2,   -- SDRAM → CPU1
+      debug_sdram_ready =&gt; debug_sdram_ready_int
     );
 
 end architecture bdf_type;
@@ -1142,6 +463,11 @@ entity Cache_Controller is
         
         -- CPU interface
         wantedAddress  : in std_logic_vector(2 downto 0);
+        cpu_data_in    : in std_logic_vector(31 downto 0);  -- Datos para escritura
+        cpu_data_out   : out std_logic_vector(31 downto 0); -- Datos leídos
+        cpu_req        : in std_logic;                       -- '1' para iniciar operación
+        cpu_rw         : in std_logic;                       -- '0': read, '1': write
+        cpu_ready      : out std_logic;                      -- '1' cuando operación completa
         
         -- SDRAM interface
         read_en        : out std_logic;
@@ -1174,35 +500,10 @@ entity Cache_Controller is
         cache_to_cache_resp_in_ready : in std_logic;
         cache_to_cache_resp_in_data : in std_logic_vector(31 downto 0);
         
-        -- DEBUG OUTPUTS - Estado del controlador de cache
-        debug_cpu_state      : out std_logic_vector(2 downto 0);    -- Estado de la CPU (idle/read/write/wait)
-        debug_cache_state    : out std_logic_vector(2 downto 0);    -- Estado de la cache (check/hit/miss/coherence/sdram)
-        debug_cache_hit      : out std_logic;                       -- Señal de cache hit
-        debug_current_addr   : out std_logic_vector(2 downto 0);    -- Dirección actual siendo procesada
-        debug_operation_type : out std_logic;                       -- Tipo de operación (0=read, 1=write)
-        debug_evict_index    : out std_logic_vector(1 downto 0);    -- Índice de evicción actual
-        debug_cycle_counter  : out std_logic_vector(3 downto 0);    -- Contador de ciclos
-        
-        -- DEBUG OUTPUTS - Estado de las líneas de cache
-        debug_cache_line0_valid : out std_logic;                    -- Línea 0 válida
-        debug_cache_line0_state : out std_logic_vector(1 downto 0); -- Estado MSI línea 0 (00=Invalid, 01=Shared, 10=Modified)
-        debug_cache_line0_addr  : out std_logic_vector(2 downto 0); -- Dirección línea 0
-        debug_cache_line0_data  : out std_logic_vector(31 downto 0);-- Datos línea 0
-        
-        debug_cache_line1_valid : out std_logic;                    -- Línea 1 válida
-        debug_cache_line1_state : out std_logic_vector(1 downto 0); -- Estado MSI línea 1
-        debug_cache_line1_addr  : out std_logic_vector(2 downto 0); -- Dirección línea 1
-        debug_cache_line1_data  : out std_logic_vector(31 downto 0);-- Datos línea 1
-        
-        debug_cache_line2_valid : out std_logic;                    -- Línea 2 válida
-        debug_cache_line2_state : out std_logic_vector(1 downto 0); -- Estado MSI línea 2
-        debug_cache_line2_addr  : out std_logic_vector(2 downto 0); -- Dirección línea 2
-        debug_cache_line2_data  : out std_logic_vector(31 downto 0);-- Datos línea 2
-        
-        debug_cache_line3_valid : out std_logic;                    -- Línea 3 válida
-        debug_cache_line3_state : out std_logic_vector(1 downto 0); -- Estado MSI línea 3
-        debug_cache_line3_addr  : out std_logic_vector(2 downto 0); -- Dirección línea 3
-        debug_cache_line3_data  : out std_logic_vector(31 downto 0) -- Datos línea 3
+        -- DEBUG OUTPUTS
+        debug_cpu_state : out std_logic_vector(2 downto 0);
+        debug_cache_state : out std_logic_vector(2 downto 0);
+        debug_cache_hit : out std_logic
     );
 end Cache_Controller;
 
@@ -1227,7 +528,7 @@ architecture Behavioral of Cache_Controller is
     type cpu_state_type is (CPU_IDLE, CPU_READ, CPU_WRITE, CPU_WAIT_CACHE, CPU_WAIT_SDRAM);
     
     -- Cache operation states  
-    type cache_state_type is (CACHE_CHECK, CACHE_HIT, CACHE_MISS, CACHE_COHERENCE, CACHE_SDRAM_ACCESS);
+    type cache_state_type is (CACHE_CHECK, CACHE_HIT, CACHE_MISS, CACHE_COHERENCE, CACHE_SDRAM_ACCESS, CACHE_SDRAM_WAIT, CACHE_EVICTION);
     
     -- Signals
     signal cache_mem : cache_array_type;
@@ -1240,10 +541,15 @@ architecture Behavioral of Cache_Controller is
     signal evict_index : integer range 0 to CACHE_SIZE-1;
     signal operation_type : std_logic; -- 0 = read, 1 = write
     signal cycle_counter : integer range 0 to 15;
+    signal eviction_needed : std_logic;
+    signal eviction_done : std_logic;
+    signal sdram_request_pending : std_logic;
     
     -- Helper functions
-    function find_cache_line(addr : std_logic_vector(2 downto 0); cache_mem : cache_array_type) 
-        return integer is
+    function find_cache_line(
+        addr : std_logic_vector(2 downto 0);
+        cache_mem : cache_array_type
+    ) return integer is
     begin
         for i in 0 to CACHE_SIZE-1 loop
             if cache_mem(i).valid = '1' and cache_mem(i).address = addr then
@@ -1264,71 +570,6 @@ architecture Behavioral of Cache_Controller is
     end function;
 
 begin
-
-    -- Asignaciones continuas para señales de debug
-    debug_current_addr &lt;= current_address;
-    debug_operation_type &lt;= operation_type;
-    debug_cache_hit &lt;= cache_hit_flag;
-    debug_evict_index &lt;= std_logic_vector(to_unsigned(evict_index, 2));
-    debug_cycle_counter &lt;= std_logic_vector(to_unsigned(cycle_counter, 4));
-    
-    -- Codificación de estados de CPU para debug
-    with cpu_state select debug_cpu_state &lt;=
-        "000" when CPU_IDLE,
-        "001" when CPU_READ,
-        "010" when CPU_WRITE,
-        "011" when CPU_WAIT_CACHE,
-        "100" when CPU_WAIT_SDRAM,
-        "111" when others;
-    
-    -- Codificación de estados de cache para debug
-    with cache_state select debug_cache_state &lt;=
-        "000" when CACHE_CHECK,
-        "001" when CACHE_HIT,
-        "010" when CACHE_MISS,
-        "011" when CACHE_COHERENCE,
-        "100" when CACHE_SDRAM_ACCESS,
-        "111" when others;
-    
-    -- Debug outputs para líneas de cache (línea 0)
-    debug_cache_line0_valid &lt;= cache_mem(0).valid;
-    debug_cache_line0_addr &lt;= cache_mem(0).address;
-    debug_cache_line0_data &lt;= cache_mem(0).data;
-    with cache_mem(0).msi_state select debug_cache_line0_state &lt;=
-        "00" when MSI_INVALID,
-        "01" when MSI_SHARED,
-        "10" when MSI_MODIFIED,
-        "11" when others;
-    
-    -- Debug outputs para líneas de cache (línea 1)
-    debug_cache_line1_valid &lt;= cache_mem(1).valid;
-    debug_cache_line1_addr &lt;= cache_mem(1).address;
-    debug_cache_line1_data &lt;= cache_mem(1).data;
-    with cache_mem(1).msi_state select debug_cache_line1_state &lt;=
-        "00" when MSI_INVALID,
-        "01" when MSI_SHARED,
-        "10" when MSI_MODIFIED,
-        "11" when others;
-    
-    -- Debug outputs para líneas de cache (línea 2)
-    debug_cache_line2_valid &lt;= cache_mem(2).valid;
-    debug_cache_line2_addr &lt;= cache_mem(2).address;
-    debug_cache_line2_data &lt;= cache_mem(2).data;
-    with cache_mem(2).msi_state select debug_cache_line2_state &lt;=
-        "00" when MSI_INVALID,
-        "01" when MSI_SHARED,
-        "10" when MSI_MODIFIED,
-        "11" when others;
-    
-    -- Debug outputs para líneas de cache (línea 3)
-    debug_cache_line3_valid &lt;= cache_mem(3).valid;
-    debug_cache_line3_addr &lt;= cache_mem(3).address;
-    debug_cache_line3_data &lt;= cache_mem(3).data;
-    with cache_mem(3).msi_state select debug_cache_line3_state &lt;=
-        "00" when MSI_INVALID,
-        "01" when MSI_SHARED,
-        "10" when MSI_MODIFIED,
-        "11" when others;
 
     -- Main cache controller process
     main_process: process(clk, reset)
@@ -1356,6 +597,8 @@ begin
             cache_to_cache_req_out &lt;= '0';
             cache_to_cache_resp_out &lt;= '0';
             cache_to_cache_resp_out_ready &lt;= '0';
+            cpu_ready &lt;= '0';
+            cpu_data_out &lt;= (others =&gt; '0');
             
             -- Reset internal signals
             current_address &lt;= (others =&gt; '0');
@@ -1365,11 +608,16 @@ begin
             operation_type &lt;= '0';
             evict_index &lt;= 0;
             cycle_counter &lt;= 0;
+            eviction_needed &lt;= '0';
+            eviction_done &lt;= '0';
+            sdram_request_pending &lt;= '0';
             
         elsif rising_edge(clk) then
             -- Default signal values
             read_en &lt;= '0';
             write_en &lt;= '0';
+            cpu_wr_req_out &lt;= '0';
+            cpu_rd_req_out &lt;= '0';
             cache_to_cache_req_out &lt;= '0';
             cache_to_cache_resp_out &lt;= '0';
             cache_to_cache_resp_out_ready &lt;= '0';
@@ -1406,26 +654,25 @@ begin
             -- Main CPU state machine
             case cpu_state is
                 when CPU_IDLE =&gt;
-                    cycle_counter &lt;= cycle_counter + 1;
-                    
-                    -- Simple test pattern - MODIFIED FOR READ TEST
-                    if cycle_counter = 3 then
-                        cpu_state &lt;= CPU_READ;
+                    cpu_ready &lt;= '0';
+                    -- Handshaking: iniciar operación cuando CPU solicite
+                    if cpu_req = '1' then
                         current_address &lt;= wantedAddress;
-                        operation_type &lt;= '0'; -- read
-                        cpu_rd_req_out &lt;= '1';
-                        cpu_req_addr_out &lt;= wantedAddress;
+                        if cpu_rw = '0' then
+                            -- Operación de lectura
+                            cpu_state &lt;= CPU_READ;
+                            operation_type &lt;= '0';
+                            cpu_rd_req_out &lt;= '1';
+                            cpu_req_addr_out &lt;= wantedAddress;
+                        else
+                            -- Operación de escritura
+                            cpu_state &lt;= CPU_WRITE;
+                            operation_type &lt;= '1';
+                            current_data &lt;= cpu_data_in;
+                            cpu_wr_req_out &lt;= '1';
+                            cpu_req_addr_out &lt;= wantedAddress;
+                        end if;
                         cache_state &lt;= CACHE_CHECK;
-                        cycle_counter &lt;= 0;
-                    elsif cycle_counter = 8 then
-                        cpu_state &lt;= CPU_WRITE;
-                        current_address &lt;= wantedAddress;
-                        current_data &lt;= x"DEADBEEF";
-                        operation_type &lt;= '1'; -- write
-                        cpu_wr_req_out &lt;= '1';
-                        cpu_req_addr_out &lt;= wantedAddress;
-                        cache_state &lt;= CACHE_CHECK;
-                        cycle_counter &lt;= 0;
                     end if;
                 
                 when CPU_READ | CPU_WRITE =&gt;
@@ -1446,16 +693,32 @@ begin
                         when CACHE_HIT =&gt;
                             if operation_type = '0' then
                                 -- Read hit - return data
+                                cpu_data_out &lt;= cache_mem(cache_hit_index).data;
+                                cpu_ready &lt;= '1';
                                 cpu_state &lt;= CPU_IDLE;
                                 cpu_rd_req_out &lt;= '0';
                                 cache_state &lt;= CACHE_CHECK;
                             else
-                                -- Write hit - update data and set modified
+                                -- Write hit - check MSI state
                                 cache_mem(cache_hit_index).data &lt;= current_data;
-                                cache_mem(cache_hit_index).msi_state &lt;= MSI_MODIFIED;
-                                cpu_state &lt;= CPU_IDLE;
-                                cpu_wr_req_out &lt;= '0';
-                                cache_state &lt;= CACHE_CHECK;
+                                if cache_mem(cache_hit_index).msi_state = MSI_SHARED then
+                                    -- Request invalidation of other copies
+                                    cpu_wr_req_out &lt;= '1';
+                                    cpu_req_addr_out &lt;= current_address;
+                                    -- Wait one cycle for invalidation, then transition to MODIFIED
+                                    cache_mem(cache_hit_index).msi_state &lt;= MSI_MODIFIED;
+                                    cpu_ready &lt;= '1';
+                                    cpu_state &lt;= CPU_IDLE;
+                                    cpu_wr_req_out &lt;= '0';
+                                    cache_state &lt;= CACHE_CHECK;
+                                elsif cache_mem(cache_hit_index).msi_state = MSI_MODIFIED then
+                                    -- Already modified, just update data
+                                    cache_mem(cache_hit_index).msi_state &lt;= MSI_MODIFIED;
+                                    cpu_ready &lt;= '1';
+                                    cpu_state &lt;= CPU_IDLE;
+                                    cpu_wr_req_out &lt;= '0';
+                                    cache_state &lt;= CACHE_CHECK;
+                                end if;
                             end if;
                         
                         when CACHE_MISS =&gt;
@@ -1476,29 +739,87 @@ begin
                                         cache_mem(empty_index).data &lt;= cache_to_cache_resp_in_data;
                                         if operation_type = '0' then
                                             cache_mem(empty_index).msi_state &lt;= MSI_SHARED;
+                                            cpu_data_out &lt;= cache_to_cache_resp_in_data;
                                         else
                                             cache_mem(empty_index).msi_state &lt;= MSI_MODIFIED;
                                             cache_mem(empty_index).data &lt;= current_data;
                                         end if;
-                                    else
-                                        -- Evict using round-robin
-                                        if cache_mem(evict_index).msi_state = MSI_MODIFIED then
-                                            -- Write back to SDRAM
-                                            write_en &lt;= '1';
-                                            Sdram_addr &lt;= cache_mem(evict_index).address;
-                                            Sdram_data_out &lt;= cache_mem(evict_index).data;
-                                        end if;
-                                        cache_mem(evict_index).valid &lt;= '1';
-                                        cache_mem(evict_index).address &lt;= current_address;
-                                        cache_mem(evict_index).data &lt;= cache_to_cache_resp_in_data;
+                                        cpu_ready &lt;= '1';
+                                        cpu_state &lt;= CPU_IDLE;
                                         if operation_type = '0' then
-                                            cache_mem(evict_index).msi_state &lt;= MSI_SHARED;
+                                            cpu_rd_req_out &lt;= '0';
                                         else
-                                            cache_mem(evict_index).msi_state &lt;= MSI_MODIFIED;
-                                            cache_mem(evict_index).data &lt;= current_data;
+                                            cpu_wr_req_out &lt;= '0';
                                         end if;
-                                        evict_index &lt;= (evict_index + 1) mod CACHE_SIZE;
+                                        cache_state &lt;= CACHE_CHECK;
+                                    else
+                                        -- Need eviction - check if writeback needed
+                                        if cache_mem(evict_index).msi_state = MSI_MODIFIED then
+                                            eviction_needed &lt;= '1';
+                                            cache_state &lt;= CACHE_EVICTION;
+                                        else
+                                            -- Direct replacement - no writeback needed
+                                            cache_mem(evict_index).valid &lt;= '1';
+                                            cache_mem(evict_index).address &lt;= current_address;
+                                            cache_mem(evict_index).data &lt;= cache_to_cache_resp_in_data;
+                                            if operation_type = '0' then
+                                                cache_mem(evict_index).msi_state &lt;= MSI_SHARED;
+                                                cpu_data_out &lt;= cache_to_cache_resp_in_data;
+                                            else
+                                                cache_mem(evict_index).msi_state &lt;= MSI_MODIFIED;
+                                                cache_mem(evict_index).data &lt;= current_data;
+                                            end if;
+                                            evict_index &lt;= (evict_index + 1) mod CACHE_SIZE;
+                                            cpu_ready &lt;= '1';
+                                            cpu_state &lt;= CPU_IDLE;
+                                            if operation_type = '0' then
+                                                cpu_rd_req_out &lt;= '0';
+                                            else
+                                                cpu_wr_req_out &lt;= '0';
+                                            end if;
+                                            cache_state &lt;= CACHE_CHECK;
+                                        end if;
                                     end if;
+                                else
+                                    -- Cache-to-cache miss, go to SDRAM
+                                    cache_state &lt;= CACHE_SDRAM_ACCESS;
+                                end if;
+                            end if;
+                        
+                        when CACHE_SDRAM_ACCESS =&gt;
+                            -- Access SDRAM for the current operation
+                            if sdram_request_pending = '0' then
+                                -- First cycle: send request to SDRAM
+                                if operation_type = '0' then
+                                    read_en &lt;= '1';
+                                else
+                                    write_en &lt;= '1';
+                                    Sdram_data_out &lt;= current_data;
+                                end if;
+                                Sdram_addr &lt;= current_address;
+                                sdram_request_pending &lt;= '1';
+                                cache_state &lt;= CACHE_SDRAM_WAIT;
+                            end if;
+                        
+                        when CACHE_SDRAM_WAIT =&gt;
+                            -- Wait for SDRAM response and allocate cache line
+                            if sdram_request_pending = '1' then
+                                sdram_request_pending &lt;= '0';
+                                
+                                empty_index := find_empty_line(cache_mem);
+                                if empty_index &gt;= 0 then
+                                    -- Use empty line
+                                    cache_mem(empty_index).valid &lt;= '1';
+                                    cache_mem(empty_index).address &lt;= current_address;
+                                    if operation_type = '0' then
+                                        cache_mem(empty_index).data &lt;= Sdram_data_in;
+                                        cache_mem(empty_index).msi_state &lt;= MSI_SHARED;
+                                        cpu_data_out &lt;= Sdram_data_in;
+                                    else
+                                        cache_mem(empty_index).data &lt;= current_data;
+                                        cache_mem(empty_index).msi_state &lt;= MSI_MODIFIED;
+                                    end if;
+                                    cpu_ready &lt;= '1';
                                     cpu_state &lt;= CPU_IDLE;
                                     if operation_type = '0' then
                                         cpu_rd_req_out &lt;= '0';
@@ -1507,58 +828,88 @@ begin
                                     end if;
                                     cache_state &lt;= CACHE_CHECK;
                                 else
-                                    -- Cache-to-cache miss, go to SDRAM
-                                    cache_state &lt;= CACHE_SDRAM_ACCESS;
+                                    -- Need eviction - check if writeback needed
+                                    if cache_mem(evict_index).msi_state = MSI_MODIFIED then
+                                        eviction_needed &lt;= '1';
+                                        cache_state &lt;= CACHE_EVICTION;
+                                    else
+                                        -- Direct replacement - no writeback needed
+                                        cache_mem(evict_index).valid &lt;= '1';
+                                        cache_mem(evict_index).address &lt;= current_address;
+                                        if operation_type = '0' then
+                                            cache_mem(evict_index).data &lt;= Sdram_data_in;
+                                            cache_mem(evict_index).msi_state &lt;= MSI_SHARED;
+                                            cpu_data_out &lt;= Sdram_data_in;
+                                        else
+                                            cache_mem(evict_index).data &lt;= current_data;
+                                            cache_mem(evict_index).msi_state &lt;= MSI_MODIFIED;
+                                        end if;
+                                        evict_index &lt;= (evict_index + 1) mod CACHE_SIZE;
+                                        cpu_ready &lt;= '1';
+                                        cpu_state &lt;= CPU_IDLE;
+                                        if operation_type = '0' then
+                                            cpu_rd_req_out &lt;= '0';
+                                        else
+                                            cpu_wr_req_out &lt;= '0';
+                                        end if;
+                                        cache_state &lt;= CACHE_CHECK;
+                                    end if;
                                 end if;
                             end if;
                         
-                        when CACHE_SDRAM_ACCESS =&gt;
-                            if operation_type = '0' then
-                                read_en &lt;= '1';
-                            else
+                        when CACHE_EVICTION =&gt;
+                            -- Handle eviction: write back modified line to SDRAM first
+                            if eviction_needed = '1' then
+                                -- First cycle: write back the evicted line
                                 write_en &lt;= '1';
-                                Sdram_data_out &lt;= current_data;
-                            end if;
-                            Sdram_addr &lt;= current_address;
-                            
-                            -- Allocate cache line
-                            empty_index := find_empty_line(cache_mem);
-                            if empty_index &gt;= 0 then
-                                cache_mem(empty_index).valid &lt;= '1';
-                                cache_mem(empty_index).address &lt;= current_address;
-                                if operation_type = '0' then
-                                    cache_mem(empty_index).data &lt;= Sdram_data_in;
-                                    cache_mem(empty_index).msi_state &lt;= MSI_SHARED;
-                                else
-                                    cache_mem(empty_index).data &lt;= current_data;
-                                    cache_mem(empty_index).msi_state &lt;= MSI_MODIFIED;
-                                end if;
-                            else
-                                -- Evict using round-robin
-                                if cache_mem(evict_index).msi_state = MSI_MODIFIED then
-                                    write_en &lt;= '1';
-                                    Sdram_addr &lt;= cache_mem(evict_index).address;
-                                    Sdram_data_out &lt;= cache_mem(evict_index).data;
-                                end if;
+                                Sdram_addr &lt;= cache_mem(evict_index).address;
+                                Sdram_data_out &lt;= cache_mem(evict_index).data;
+                                eviction_needed &lt;= '0';
+                                eviction_done &lt;= '1';
+                            elsif eviction_done = '1' then
+                                -- Second cycle: load new data into the cache line
                                 cache_mem(evict_index).valid &lt;= '1';
                                 cache_mem(evict_index).address &lt;= current_address;
-                                if operation_type = '0' then
-                                    cache_mem(evict_index).data &lt;= Sdram_data_in;
-                                    cache_mem(evict_index).msi_state &lt;= MSI_SHARED;
+                                
+                                -- Determine source of data based on previous state
+                                if cache_state = CACHE_COHERENCE then
+                                    -- Data comes from cache-to-cache transfer
+                                    cache_mem(evict_index).data &lt;= cache_to_cache_resp_in_data;
+                                    if operation_type = '0' then
+                                        cache_mem(evict_index).msi_state &lt;= MSI_SHARED;
+                                        cpu_data_out &lt;= cache_to_cache_resp_in_data;
+                                    else
+                                        cache_mem(evict_index).msi_state &lt;= MSI_MODIFIED;
+                                        cache_mem(evict_index).data &lt;= current_data;
+                                    end if;
                                 else
-                                    cache_mem(evict_index).data &lt;= current_data;
-                                    cache_mem(evict_index).msi_state &lt;= MSI_MODIFIED;
+                                    -- Data comes from SDRAM
+                                    if operation_type = '0' then
+                                        cache_mem(evict_index).data &lt;= Sdram_data_in;
+                                        cache_mem(evict_index).msi_state &lt;= MSI_SHARED;
+                                        cpu_data_out &lt;= Sdram_data_in;
+                                        read_en &lt;= '1';
+                                        Sdram_addr &lt;= current_address;
+                                    else
+                                        cache_mem(evict_index).data &lt;= current_data;
+                                        cache_mem(evict_index).msi_state &lt;= MSI_MODIFIED;
+                                        write_en &lt;= '1';
+                                        Sdram_addr &lt;= current_address;
+                                        Sdram_data_out &lt;= current_data;
+                                    end if;
                                 end if;
+                                
                                 evict_index &lt;= (evict_index + 1) mod CACHE_SIZE;
+                                eviction_done &lt;= '0';
+                                cpu_ready &lt;= '1';
+                                cpu_state &lt;= CPU_IDLE;
+                                if operation_type = '0' then
+                                    cpu_rd_req_out &lt;= '0';
+                                else
+                                    cpu_wr_req_out &lt;= '0';
+                                end if;
+                                cache_state &lt;= CACHE_CHECK;
                             end if;
-                            
-                            cpu_state &lt;= CPU_IDLE;
-                            if operation_type = '0' then
-                                cpu_rd_req_out &lt;= '0';
-                            else
-                                cpu_wr_req_out &lt;= '0';
-                            end if;
-                            cache_state &lt;= CACHE_CHECK;
                     end case;
                 
                 when others =&gt;
@@ -1594,6 +945,8 @@ end sdram;
 architecture Behavioral of sdram is
     type memory_array is array (0 to 7) of std_logic_vector(31 downto 0);
     signal memory : memory_array;
+    signal port1_active : std_logic;
+    signal port2_active : std_logic;
 begin
     process(clk, reset)
     begin
@@ -1607,26 +960,49 @@ begin
             memory(5) &lt;= x"55555555";
             memory(6) &lt;= x"66666666";
             memory(7) &lt;= x"77777777";
+            port1_active &lt;= '0';
+            port2_active &lt;= '0';
         elsif rising_edge(clk) then
-            -- Port 1 operations
-            if ready1 = '1' then
+            -- Clear previous activity flags
+            port1_active &lt;= '0';
+            port2_active &lt;= '0';
+            
+            -- Check for simultaneous access to same address
+            if ready1 = '1' and ready2 = '1' and addr1 = addr2 then
+                -- Conflict: prioritize port1 (can be changed based on system requirements)
+                port1_active &lt;= '1';
                 if operation1 = '1' then
-                    -- Write
+                    -- Port1 write has priority
                     memory(to_integer(unsigned(addr1))) &lt;= data_in1;
                 else
-                    -- Read
+                    -- Port1 read
                     data_out1 &lt;= memory(to_integer(unsigned(addr1)));
                 end if;
-            end if;
-            
-            -- Port 2 operations
-            if ready2 = '1' then
-                if operation2 = '1' then
-                    -- Write
-                    memory(to_integer(unsigned(addr2))) &lt;= data_in2;
-                else
-                    -- Read
-                    data_out2 &lt;= memory(to_integer(unsigned(addr2)));
+                -- Port2 is delayed to next cycle (could implement queuing)
+            else
+                -- No conflict or only one port active
+                -- Port 1 operations
+                if ready1 = '1' then
+                    port1_active &lt;= '1';
+                    if operation1 = '1' then
+                        -- Write
+                        memory(to_integer(unsigned(addr1))) &lt;= data_in1;
+                    else
+                        -- Read
+                        data_out1 &lt;= memory(to_integer(unsigned(addr1)));
+                    end if;
+                end if;
+                
+                -- Port 2 operations  
+                if ready2 = '1' then
+                    port2_active &lt;= '1';
+                    if operation2 = '1' then
+                        -- Write
+                        memory(to_integer(unsigned(addr2))) &lt;= data_in2;
+                    else
+                        -- Read
+                        data_out2 &lt;= memory(to_integer(unsigned(addr2)));
+                    end if;
                 end if;
             end if;
         end if;
