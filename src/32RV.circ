@@ -63,6 +63,24 @@
     <a name="circuit" val="main"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
+    <comp loc="(1040,700)" name="msi_protocol">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <comp loc="(1050,1130)" name="FIFO">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <comp loc="(1430,840)" name="sdram">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <comp loc="(660,1200)" name="CPU_Core">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <comp loc="(660,800)" name="CPU_Core">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
+    <comp loc="(830,900)" name="TransactionsBetweenCPU">
+      <a name="appearance" val="logisim_evolution"/>
+    </comp>
   </circuit>
   <circuit name="ProgramCounter">
     <a name="appearance" val="logisim_evolution"/>
@@ -2643,18 +2661,12 @@
     <wire from="(980,110)" to="(980,190)"/>
     <wire from="(980,190)" to="(1060,190)"/>
   </circuit>
-  <circuit name="Cache">
-    <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="Cache"/>
-    <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="1.0"/>
-  </circuit>
   <circuit name="Core">
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="Core"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
-    <comp lib="0" loc="(1400,520)" name="Tunnel">
+    <comp lib="0" loc="(1460,520)" name="Tunnel">
       <a name="label" val="DestinationRegister"/>
       <a name="labelfont" val="SansSerif bold 10"/>
       <a name="width" val="5"/>
@@ -2683,314 +2695,314 @@
       <a name="label" val="Flag"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
+    <comp lib="0" loc="(1670,520)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="DestinationRegister"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="5"/>
+    </comp>
     <comp lib="0" loc="(1670,970)" name="Tunnel">
       <a name="label" val="RegWrite"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="0" loc="(1720,520)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="DestinationRegister"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="5"/>
-    </comp>
-    <comp lib="0" loc="(1830,530)" name="Tunnel">
+    <comp lib="0" loc="(1930,530)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="clk"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="0" loc="(1970,600)" name="Tunnel">
+    <comp lib="0" loc="(2070,600)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="EX_MEM_MemWrite_t"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="0" loc="(1990,560)" name="Tunnel">
+    <comp lib="0" loc="(2090,560)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="MEM_WB_RDI"/>
       <a name="labelfont" val="SansSerif bold 10"/>
       <a name="width" val="5"/>
     </comp>
-    <comp lib="0" loc="(2000,620)" name="Tunnel">
+    <comp lib="0" loc="(210,540)" name="Clock"/>
+    <comp lib="0" loc="(2100,620)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="clk"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="0" loc="(2020,440)" name="Tunnel">
+    <comp lib="0" loc="(2120,440)" name="Tunnel">
       <a name="label" val="WriteBackData"/>
       <a name="labelfont" val="SansSerif bold 10"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(2130,750)" name="Tunnel">
+    <comp lib="0" loc="(220,240)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+    </comp>
+    <comp lib="0" loc="(2230,750)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="clk"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="0" loc="(2130,890)" name="Tunnel">
+    <comp lib="0" loc="(2230,890)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="clk"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="0" loc="(2130,990)" name="Tunnel">
+    <comp lib="0" loc="(2230,990)" name="Tunnel">
       <a name="facing" val="north"/>
       <a name="label" val="clk"/>
       <a name="labelfont" val="SansSerif bold 10"/>
     </comp>
-    <comp lib="0" loc="(2280,480)" name="Tunnel">
+    <comp lib="0" loc="(2380,480)" name="Tunnel">
       <a name="label" val="SecondOperand"/>
       <a name="labelfont" val="SansSerif bold 10"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(2340,860)" name="Bit Extender">
+    <comp lib="0" loc="(240,240)" name="Tunnel">
+      <a name="label" val="branch_test"/>
+    </comp>
+    <comp lib="0" loc="(2440,860)" name="Bit Extender">
       <a name="in_width" val="4"/>
       <a name="out_width" val="7"/>
     </comp>
-    <comp lib="0" loc="(2610,520)" name="Tunnel">
+    <comp lib="0" loc="(260,570)" name="Tunnel">
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(2710,520)" name="Tunnel">
       <a name="label" val="ALUResult"/>
       <a name="labelfont" val="SansSerif bold 10"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(280,540)" name="Clock"/>
-    <comp lib="0" loc="(2880,380)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="ALUResult"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(2880,530)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="SecondOperand"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(2890,1090)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="MemtoReg"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,1130)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,1230)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="RegWrite"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,1270)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,420)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,570)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,670)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="DestinationRegister"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="5"/>
-    </comp>
-    <comp lib="0" loc="(2890,710)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,810)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="MemRead"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,850)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,940)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="MemWrite"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2890,980)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(290,240)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-    </comp>
-    <comp lib="0" loc="(2990,380)" name="Tunnel">
-      <a name="label" val="EX_MEM_ALU_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(2990,530)" name="Tunnel">
-      <a name="label" val="EX_MEM_RD2_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(2990,670)" name="Tunnel">
-      <a name="label" val="EX_MEM_RD_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="5"/>
-    </comp>
-    <comp lib="0" loc="(2990,810)" name="Tunnel">
-      <a name="label" val="EX_MEM_MemRead_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(2990,940)" name="Tunnel">
-      <a name="label" val="EX_MEM_MemWrite_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(310,240)" name="Tunnel">
-      <a name="label" val="branch_test"/>
-    </comp>
-    <comp lib="0" loc="(3220,420)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="EX_MEM_ALU_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(3220,490)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="EX_MEM_RD2_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(3240,1080)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="EX_MEM_MemToReg_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3240,1220)" name="Tunnel">
-      <a name="facing" val="south"/>
-      <a name="label" val="EX_MEM_RegWrite_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3250,450)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="EX_MEM_MemWrite_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3260,550)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3270,420)" name="Splitter">
-      <a name="bit1" val="0"/>
-      <a name="bit10" val="0"/>
-      <a name="bit11" val="0"/>
-      <a name="bit12" val="0"/>
-      <a name="bit13" val="0"/>
-      <a name="bit14" val="0"/>
-      <a name="bit15" val="none"/>
-      <a name="bit16" val="none"/>
-      <a name="bit17" val="none"/>
-      <a name="bit18" val="none"/>
-      <a name="bit19" val="none"/>
-      <a name="bit2" val="0"/>
-      <a name="bit20" val="none"/>
-      <a name="bit21" val="none"/>
-      <a name="bit22" val="none"/>
-      <a name="bit23" val="none"/>
-      <a name="bit24" val="none"/>
-      <a name="bit25" val="none"/>
-      <a name="bit26" val="none"/>
-      <a name="bit27" val="none"/>
-      <a name="bit28" val="none"/>
-      <a name="bit29" val="none"/>
-      <a name="bit3" val="0"/>
-      <a name="bit30" val="none"/>
-      <a name="bit31" val="none"/>
-      <a name="bit4" val="0"/>
-      <a name="bit5" val="0"/>
-      <a name="bit6" val="0"/>
-      <a name="bit7" val="0"/>
-      <a name="bit8" val="0"/>
-      <a name="bit9" val="0"/>
-      <a name="fanout" val="1"/>
-      <a name="incoming" val="32"/>
-    </comp>
-    <comp lib="0" loc="(3280,460)" name="Constant"/>
-    <comp lib="0" loc="(330,570)" name="Tunnel">
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3440,860)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3440,950)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="EX_MEM_RD_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="5"/>
-    </comp>
-    <comp lib="0" loc="(3450,670)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="EX_MEM_ALU_t"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(3450,710)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3450,990)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3460,1130)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3460,1270)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="clk"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(3560,950)" name="Tunnel">
-      <a name="label" val="MEM_WB_RDI"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-      <a name="width" val="5"/>
-    </comp>
-    <comp lib="0" loc="(3570,1230)" name="Tunnel">
-      <a name="label" val="MEM_WB_RegWrite"/>
-      <a name="labelfont" val="SansSerif bold 10"/>
-    </comp>
-    <comp lib="0" loc="(360,200)" name="Pin">
+    <comp lib="0" loc="(290,200)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="radix" val="16"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(3780,740)" name="Tunnel">
+    <comp lib="0" loc="(3020,380)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="ALUResult"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3020,530)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="SecondOperand"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3030,1090)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="MemtoReg"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,1130)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,1230)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="RegWrite"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,1270)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,420)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,570)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,670)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="DestinationRegister"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="5"/>
+    </comp>
+    <comp lib="0" loc="(3030,710)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,810)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="MemRead"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,850)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,940)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="MemWrite"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3030,980)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3130,380)" name="Tunnel">
+      <a name="label" val="EX_MEM_ALU_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3130,530)" name="Tunnel">
+      <a name="label" val="EX_MEM_RD2_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3130,670)" name="Tunnel">
+      <a name="label" val="EX_MEM_RD_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="5"/>
+    </comp>
+    <comp lib="0" loc="(3130,810)" name="Tunnel">
+      <a name="label" val="EX_MEM_MemRead_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3130,940)" name="Tunnel">
+      <a name="label" val="EX_MEM_MemWrite_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(320,200)" name="Tunnel">
+      <a name="label" val="jmp_ins_idx"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3360,420)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="EX_MEM_ALU_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3360,490)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="EX_MEM_RD2_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3380,1080)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="EX_MEM_MemToReg_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3380,1220)" name="Tunnel">
+      <a name="facing" val="south"/>
+      <a name="label" val="EX_MEM_RegWrite_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3390,450)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="EX_MEM_MemWrite_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3400,550)" name="Tunnel">
+      <a name="facing" val="north"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3410,420)" name="Splitter">
+      <a name="bit1" val="0"/>
+      <a name="bit10" val="0"/>
+      <a name="bit11" val="0"/>
+      <a name="bit12" val="0"/>
+      <a name="bit13" val="0"/>
+      <a name="bit14" val="0"/>
+      <a name="bit15" val="none"/>
+      <a name="bit16" val="none"/>
+      <a name="bit17" val="none"/>
+      <a name="bit18" val="none"/>
+      <a name="bit19" val="none"/>
+      <a name="bit2" val="0"/>
+      <a name="bit20" val="none"/>
+      <a name="bit21" val="none"/>
+      <a name="bit22" val="none"/>
+      <a name="bit23" val="none"/>
+      <a name="bit24" val="none"/>
+      <a name="bit25" val="none"/>
+      <a name="bit26" val="none"/>
+      <a name="bit27" val="none"/>
+      <a name="bit28" val="none"/>
+      <a name="bit29" val="none"/>
+      <a name="bit3" val="0"/>
+      <a name="bit30" val="none"/>
+      <a name="bit31" val="none"/>
+      <a name="bit4" val="0"/>
+      <a name="bit5" val="0"/>
+      <a name="bit6" val="0"/>
+      <a name="bit7" val="0"/>
+      <a name="bit8" val="0"/>
+      <a name="bit9" val="0"/>
+      <a name="fanout" val="1"/>
+      <a name="incoming" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3420,460)" name="Constant"/>
+    <comp lib="0" loc="(3580,860)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3580,950)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="EX_MEM_RD_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="5"/>
+    </comp>
+    <comp lib="0" loc="(3590,670)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="EX_MEM_ALU_t"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(3590,710)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3590,990)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3600,1130)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3600,1270)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="clk"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(3700,950)" name="Tunnel">
+      <a name="label" val="MEM_WB_RDI"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+      <a name="width" val="5"/>
+    </comp>
+    <comp lib="0" loc="(3710,1230)" name="Tunnel">
+      <a name="label" val="MEM_WB_RegWrite"/>
+      <a name="labelfont" val="SansSerif bold 10"/>
+    </comp>
+    <comp lib="0" loc="(380,450)" name="Tunnel">
+      <a name="label" val="branch_test"/>
+    </comp>
+    <comp lib="0" loc="(3920,740)" name="Tunnel">
       <a name="label" val="WriteBackData"/>
       <a name="labelfont" val="SansSerif bold 10"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(390,200)" name="Tunnel">
+    <comp lib="0" loc="(410,410)" name="Tunnel">
       <a name="label" val="jmp_ins_idx"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(450,450)" name="Tunnel">
-      <a name="label" val="branch_test"/>
-    </comp>
-    <comp lib="0" loc="(480,410)" name="Tunnel">
-      <a name="label" val="jmp_ins_idx"/>
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(640,360)" name="Splitter">
+    <comp lib="0" loc="(570,360)" name="Splitter">
       <a name="bit1" val="0"/>
       <a name="bit10" val="0"/>
       <a name="bit11" val="0"/>
@@ -3026,7 +3038,7 @@
       <a name="fanout" val="1"/>
       <a name="incoming" val="32"/>
     </comp>
-    <comp lib="0" loc="(960,520)" name="Constant"/>
+    <comp lib="0" loc="(890,520)" name="Constant"/>
     <comp lib="1" loc="(1610,1160)" name="OR Gate">
       <a name="size" val="30"/>
     </comp>
@@ -3036,155 +3048,158 @@
     <comp lib="1" loc="(1630,970)" name="OR Gate">
       <a name="inputs" val="7"/>
     </comp>
-    <comp lib="1" loc="(1810,650)" name="OR Gate">
+    <comp lib="1" loc="(1910,650)" name="OR Gate">
       <a name="size" val="30"/>
     </comp>
-    <comp lib="1" loc="(410,450)" name="NOT Gate">
+    <comp lib="1" loc="(340,450)" name="NOT Gate">
       <a name="facing" val="west"/>
     </comp>
-    <comp lib="2" loc="(2300,550)" name="Multiplexer">
+    <comp lib="2" loc="(2400,550)" name="Multiplexer">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="2" loc="(3740,740)" name="Multiplexer">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="2" loc="(380,420)" name="Multiplexer">
+    <comp lib="2" loc="(310,420)" name="Multiplexer">
       <a name="facing" val="west"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="4" loc="(1850,500)" name="Register">
+    <comp lib="2" loc="(3880,740)" name="Multiplexer">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="4" loc="(1950,500)" name="Register">
       <a name="appearance" val="classic"/>
       <a name="label" val="RD"/>
       <a name="width" val="5"/>
     </comp>
-    <comp lib="4" loc="(2150,720)" name="Register">
+    <comp lib="4" loc="(2250,720)" name="Register">
       <a name="appearance" val="classic"/>
       <a name="label" val="Inm"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="4" loc="(2150,860)" name="Register">
+    <comp lib="4" loc="(2250,860)" name="Register">
       <a name="appearance" val="classic"/>
       <a name="label" val="Code"/>
       <a name="width" val="4"/>
     </comp>
-    <comp lib="4" loc="(2150,960)" name="Register">
+    <comp lib="4" loc="(2250,960)" name="Register">
       <a name="appearance" val="classic"/>
       <a name="label" val="Inmediate"/>
       <a name="width" val="1"/>
     </comp>
-    <comp lib="4" loc="(2900,1060)" name="Register">
+    <comp lib="4" loc="(3040,1060)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="EX_MEM_MemToReg"/>
       <a name="width" val="1"/>
     </comp>
-    <comp lib="4" loc="(2900,1200)" name="Register">
+    <comp lib="4" loc="(3040,1200)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="EX_MEM_RegWrite"/>
       <a name="width" val="1"/>
     </comp>
-    <comp lib="4" loc="(2900,350)" name="Register">
+    <comp lib="4" loc="(3040,350)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="EX_MEM_ALU"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="4" loc="(2900,500)" name="Register">
+    <comp lib="4" loc="(3040,500)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="EX_MEM_RD2"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="4" loc="(2900,640)" name="Register">
+    <comp lib="4" loc="(3040,640)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="EX_MEM_RD"/>
       <a name="width" val="5"/>
     </comp>
-    <comp lib="4" loc="(2900,780)" name="Register">
+    <comp lib="4" loc="(3040,780)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="EX_MEM_MemRead"/>
       <a name="width" val="1"/>
     </comp>
-    <comp lib="4" loc="(2900,910)" name="Register">
+    <comp lib="4" loc="(3040,910)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="EX_MEM_MemWrite"/>
       <a name="width" val="1"/>
     </comp>
-    <comp lib="4" loc="(3290,400)" name="RAM">
+    <comp lib="4" loc="(3430,400)" name="RAM">
       <a name="addrWidth" val="15"/>
       <a name="appearance" val="classic"/>
       <a name="dataWidth" val="32"/>
       <a name="label" val="SDRAM"/>
       <a name="labelvisible" val="true"/>
     </comp>
-    <comp lib="4" loc="(3460,640)" name="Register">
+    <comp lib="4" loc="(3600,640)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="MEM_WB_ALU"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="4" loc="(3460,790)" name="Register">
+    <comp lib="4" loc="(3600,790)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="MEM_WB_MEMDATA"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="4" loc="(3460,920)" name="Register">
+    <comp lib="4" loc="(3600,920)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="MEM_WB_RDI"/>
       <a name="width" val="5"/>
     </comp>
-    <comp lib="4" loc="(3470,1060)" name="Register">
+    <comp lib="4" loc="(3610,1060)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="MEM_WB_MemtoReg"/>
       <a name="width" val="1"/>
     </comp>
-    <comp lib="4" loc="(3470,1200)" name="Register">
+    <comp lib="4" loc="(3610,1200)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="MEM_WB_RegWrite"/>
       <a name="width" val="1"/>
     </comp>
-    <comp lib="4" loc="(670,370)" name="RAM">
+    <comp lib="4" loc="(600,370)" name="RAM">
       <a name="addrWidth" val="15"/>
       <a name="appearance" val="classic"/>
       <a name="dataWidth" val="32"/>
       <a name="label" val="IM"/>
     </comp>
-    <comp lib="4" loc="(960,470)" name="Register">
+    <comp lib="4" loc="(890,470)" name="Register">
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="IF_ID"/>
       <a name="width" val="32"/>
     </comp>
-    <comp lib="8" loc="(1270,365)" name="Text">
+    <comp lib="8" loc="(1410,340)" name="Text">
       <a name="font" val="SansSerif bold 22"/>
       <a name="text" val="Decode"/>
     </comp>
-    <comp lib="8" loc="(2430,370)" name="Text">
+    <comp lib="8" loc="(2530,365)" name="Text">
       <a name="font" val="SansSerif bold 22"/>
       <a name="text" val="Execute"/>
     </comp>
-    <comp lib="8" loc="(2705,625)" name="Text">
-      <a name="font" val="SansSerif bold 33"/>
+    <comp lib="8" loc="(2735,575)" name="Text">
+      <a name="font" val="SansSerif plain 26"/>
       <a name="text" val="TIPO R"/>
     </comp>
-    <comp lib="8" loc="(3126,268)" name="Text">
+    <comp lib="8" loc="(3265,265)" name="Text">
       <a name="font" val="SansSerif bold 22"/>
       <a name="text" val="Memory"/>
     </comp>
-    <comp lib="8" loc="(3843,303)" name="Text">
+    <comp lib="8" loc="(3980,300)" name="Text">
       <a name="font" val="SansSerif bold 22"/>
       <a name="text" val="Writeback "/>
     </comp>
+    <comp lib="8" loc="(715,345)" name="Text">
+      <a name="font" val="SansSerif bold 22"/>
+      <a name="text" val="Fetch"/>
+    </comp>
     <comp loc="(1360,500)" name="IDecode"/>
-    <comp loc="(1990,840)" name="alu_decoder">
+    <comp loc="(2090,840)" name="alu_decoder">
       <a name="appearance" val="logisim_evolution"/>
     </comp>
-    <comp loc="(2240,520)" name="RegisterFile"/>
-    <comp loc="(2580,520)" name="ALU">
+    <comp loc="(2340,520)" name="RegisterFile"/>
+    <comp loc="(2680,520)" name="ALU">
       <a name="appearance" val="logisim_evolution"/>
     </comp>
-    <comp loc="(570,480)" name="ProgramCounter"/>
-    <wire from="(1020,500)" to="(1140,500)"/>
+    <comp loc="(500,480)" name="ProgramCounter"/>
     <wire from="(1360,500)" to="(1740,500)"/>
-    <wire from="(1360,520)" to="(1400,520)"/>
+    <wire from="(1360,520)" to="(1460,520)"/>
     <wire from="(1360,540)" to="(1730,540)"/>
-    <wire from="(1360,560)" to="(1870,560)"/>
-    <wire from="(1360,580)" to="(1900,580)"/>
+    <wire from="(1360,560)" to="(1970,560)"/>
+    <wire from="(1360,580)" to="(2000,580)"/>
     <wire from="(1360,600)" to="(1720,600)"/>
     <wire from="(1360,620)" to="(1710,620)"/>
     <wire from="(1360,640)" to="(1420,640)"/>
@@ -3199,10 +3214,10 @@
     <wire from="(1360,820)" to="(1390,820)"/>
     <wire from="(1420,1000)" to="(1580,1000)"/>
     <wire from="(1420,640)" to="(1420,1000)"/>
-    <wire from="(1420,640)" to="(1780,640)"/>
+    <wire from="(1420,640)" to="(1880,640)"/>
     <wire from="(1430,1090)" to="(1580,1090)"/>
     <wire from="(1430,660)" to="(1430,990)"/>
-    <wire from="(1430,660)" to="(1780,660)"/>
+    <wire from="(1430,660)" to="(1880,660)"/>
     <wire from="(1430,990)" to="(1430,1090)"/>
     <wire from="(1430,990)" to="(1580,990)"/>
     <wire from="(1440,1080)" to="(1580,1080)"/>
@@ -3237,138 +3252,139 @@
     <wire from="(1610,1160)" to="(1670,1160)"/>
     <wire from="(1630,1060)" to="(1670,1060)"/>
     <wire from="(1630,970)" to="(1670,970)"/>
+    <wire from="(1670,520)" to="(1890,520)"/>
     <wire from="(1710,620)" to="(1710,720)"/>
-    <wire from="(1710,720)" to="(2120,720)"/>
-    <wire from="(1720,520)" to="(1790,520)"/>
+    <wire from="(1710,720)" to="(2220,720)"/>
     <wire from="(1720,600)" to="(1720,880)"/>
-    <wire from="(1720,880)" to="(1770,880)"/>
+    <wire from="(1720,880)" to="(1870,880)"/>
     <wire from="(1730,540)" to="(1730,860)"/>
-    <wire from="(1730,860)" to="(1770,860)"/>
+    <wire from="(1730,860)" to="(1870,860)"/>
     <wire from="(1740,500)" to="(1740,840)"/>
-    <wire from="(1740,840)" to="(1770,840)"/>
-    <wire from="(1790,500)" to="(1790,520)"/>
-    <wire from="(1790,500)" to="(1820,500)"/>
-    <wire from="(1810,650)" to="(1860,650)"/>
-    <wire from="(1830,520)" to="(1830,530)"/>
-    <wire from="(1850,500)" to="(1980,500)"/>
-    <wire from="(1870,520)" to="(1870,560)"/>
-    <wire from="(1870,520)" to="(2020,520)"/>
-    <wire from="(1900,540)" to="(1900,580)"/>
-    <wire from="(1900,540)" to="(2020,540)"/>
-    <wire from="(1970,600)" to="(2020,600)"/>
-    <wire from="(1990,560)" to="(2020,560)"/>
-    <wire from="(1990,840)" to="(2040,840)"/>
-    <wire from="(1990,860)" to="(2000,860)"/>
-    <wire from="(2000,440)" to="(2000,580)"/>
-    <wire from="(2000,440)" to="(2020,440)"/>
-    <wire from="(2000,580)" to="(2020,580)"/>
-    <wire from="(2000,620)" to="(2020,620)"/>
-    <wire from="(2000,860)" to="(2000,960)"/>
-    <wire from="(2000,960)" to="(2120,960)"/>
-    <wire from="(2040,840)" to="(2040,860)"/>
-    <wire from="(2040,860)" to="(2120,860)"/>
-    <wire from="(2130,740)" to="(2130,750)"/>
-    <wire from="(2130,880)" to="(2130,890)"/>
-    <wire from="(2130,980)" to="(2130,990)"/>
-    <wire from="(2150,720)" to="(2250,720)"/>
-    <wire from="(2150,860)" to="(2300,860)"/>
-    <wire from="(2150,960)" to="(2280,960)"/>
-    <wire from="(2240,520)" to="(2360,520)"/>
-    <wire from="(2240,540)" to="(2250,540)"/>
-    <wire from="(2250,480)" to="(2250,540)"/>
-    <wire from="(2250,480)" to="(2280,480)"/>
-    <wire from="(2250,540)" to="(2270,540)"/>
-    <wire from="(2250,560)" to="(2250,720)"/>
-    <wire from="(2250,560)" to="(2270,560)"/>
-    <wire from="(2280,570)" to="(2280,960)"/>
-    <wire from="(2300,550)" to="(2310,550)"/>
-    <wire from="(2310,540)" to="(2310,550)"/>
-    <wire from="(2310,540)" to="(2360,540)"/>
-    <wire from="(2340,860)" to="(2350,860)"/>
-    <wire from="(2350,560)" to="(2350,860)"/>
-    <wire from="(2350,560)" to="(2360,560)"/>
-    <wire from="(2580,520)" to="(2610,520)"/>
-    <wire from="(280,540)" to="(310,540)"/>
-    <wire from="(2880,380)" to="(2900,380)"/>
-    <wire from="(2880,530)" to="(2900,530)"/>
-    <wire from="(2890,1090)" to="(2900,1090)"/>
-    <wire from="(2890,1130)" to="(2900,1130)"/>
-    <wire from="(2890,1230)" to="(2900,1230)"/>
-    <wire from="(2890,1270)" to="(2900,1270)"/>
-    <wire from="(2890,420)" to="(2900,420)"/>
-    <wire from="(2890,570)" to="(2900,570)"/>
-    <wire from="(2890,670)" to="(2900,670)"/>
-    <wire from="(2890,710)" to="(2900,710)"/>
-    <wire from="(2890,810)" to="(2900,810)"/>
-    <wire from="(2890,850)" to="(2900,850)"/>
-    <wire from="(2890,940)" to="(2900,940)"/>
-    <wire from="(2890,980)" to="(2900,980)"/>
-    <wire from="(290,240)" to="(310,240)"/>
-    <wire from="(2960,1090)" to="(3240,1090)"/>
-    <wire from="(2960,1230)" to="(3240,1230)"/>
-    <wire from="(2960,380)" to="(2990,380)"/>
-    <wire from="(2960,530)" to="(2990,530)"/>
-    <wire from="(2960,670)" to="(2990,670)"/>
-    <wire from="(2960,810)" to="(2990,810)"/>
-    <wire from="(2960,940)" to="(2990,940)"/>
-    <wire from="(310,420)" to="(310,480)"/>
-    <wire from="(310,420)" to="(380,420)"/>
-    <wire from="(310,480)" to="(350,480)"/>
-    <wire from="(310,540)" to="(310,570)"/>
-    <wire from="(310,540)" to="(350,540)"/>
-    <wire from="(310,570)" to="(330,570)"/>
-    <wire from="(3220,420)" to="(3270,420)"/>
-    <wire from="(3220,490)" to="(3290,490)"/>
-    <wire from="(3240,1080)" to="(3240,1090)"/>
-    <wire from="(3240,1090)" to="(3470,1090)"/>
-    <wire from="(3240,1220)" to="(3240,1230)"/>
-    <wire from="(3240,1230)" to="(3470,1230)"/>
-    <wire from="(3250,450)" to="(3290,450)"/>
-    <wire from="(3260,470)" to="(3260,550)"/>
-    <wire from="(3260,470)" to="(3290,470)"/>
-    <wire from="(3280,460)" to="(3290,460)"/>
-    <wire from="(3350,590)" to="(3350,820)"/>
-    <wire from="(3350,590)" to="(3570,590)"/>
-    <wire from="(3350,820)" to="(3460,820)"/>
-    <wire from="(3440,860)" to="(3460,860)"/>
-    <wire from="(3440,950)" to="(3460,950)"/>
-    <wire from="(3450,670)" to="(3460,670)"/>
-    <wire from="(3450,710)" to="(3460,710)"/>
-    <wire from="(3450,990)" to="(3460,990)"/>
-    <wire from="(3460,1130)" to="(3470,1130)"/>
-    <wire from="(3460,1270)" to="(3470,1270)"/>
-    <wire from="(350,500)" to="(350,540)"/>
-    <wire from="(350,540)" to="(630,540)"/>
-    <wire from="(3520,670)" to="(3670,670)"/>
-    <wire from="(3520,820)" to="(3670,820)"/>
-    <wire from="(3520,950)" to="(3560,950)"/>
-    <wire from="(3530,1090)" to="(3720,1090)"/>
-    <wire from="(3530,1230)" to="(3570,1230)"/>
-    <wire from="(3530,490)" to="(3570,490)"/>
-    <wire from="(3570,490)" to="(3570,590)"/>
-    <wire from="(360,200)" to="(390,200)"/>
-    <wire from="(3670,670)" to="(3670,730)"/>
-    <wire from="(3670,730)" to="(3710,730)"/>
-    <wire from="(3670,750)" to="(3670,820)"/>
-    <wire from="(3670,750)" to="(3710,750)"/>
-    <wire from="(3720,760)" to="(3720,1090)"/>
-    <wire from="(3740,740)" to="(3780,740)"/>
-    <wire from="(400,440)" to="(400,450)"/>
-    <wire from="(400,450)" to="(410,450)"/>
-    <wire from="(410,410)" to="(480,410)"/>
-    <wire from="(410,430)" to="(570,430)"/>
-    <wire from="(440,450)" to="(450,450)"/>
-    <wire from="(570,430)" to="(570,480)"/>
-    <wire from="(570,500)" to="(610,500)"/>
-    <wire from="(610,360)" to="(610,500)"/>
-    <wire from="(610,360)" to="(640,360)"/>
-    <wire from="(630,440)" to="(630,540)"/>
-    <wire from="(630,440)" to="(670,440)"/>
-    <wire from="(630,540)" to="(960,540)"/>
-    <wire from="(650,380)" to="(670,380)"/>
-    <wire from="(910,460)" to="(940,460)"/>
-    <wire from="(940,460)" to="(940,500)"/>
-    <wire from="(940,500)" to="(960,500)"/>
+    <wire from="(1740,840)" to="(1870,840)"/>
+    <wire from="(1890,500)" to="(1890,520)"/>
+    <wire from="(1890,500)" to="(1920,500)"/>
+    <wire from="(1910,650)" to="(1960,650)"/>
+    <wire from="(1930,520)" to="(1930,530)"/>
+    <wire from="(1950,500)" to="(2080,500)"/>
+    <wire from="(1970,520)" to="(1970,560)"/>
+    <wire from="(1970,520)" to="(2120,520)"/>
+    <wire from="(2000,540)" to="(2000,580)"/>
+    <wire from="(2000,540)" to="(2120,540)"/>
+    <wire from="(2070,600)" to="(2120,600)"/>
+    <wire from="(2090,560)" to="(2120,560)"/>
+    <wire from="(2090,840)" to="(2140,840)"/>
+    <wire from="(2090,860)" to="(2100,860)"/>
+    <wire from="(210,540)" to="(240,540)"/>
+    <wire from="(2100,440)" to="(2100,580)"/>
+    <wire from="(2100,440)" to="(2120,440)"/>
+    <wire from="(2100,580)" to="(2120,580)"/>
+    <wire from="(2100,620)" to="(2120,620)"/>
+    <wire from="(2100,860)" to="(2100,960)"/>
+    <wire from="(2100,960)" to="(2220,960)"/>
+    <wire from="(2140,840)" to="(2140,860)"/>
+    <wire from="(2140,860)" to="(2220,860)"/>
+    <wire from="(220,240)" to="(240,240)"/>
+    <wire from="(2230,740)" to="(2230,750)"/>
+    <wire from="(2230,880)" to="(2230,890)"/>
+    <wire from="(2230,980)" to="(2230,990)"/>
+    <wire from="(2250,720)" to="(2350,720)"/>
+    <wire from="(2250,860)" to="(2400,860)"/>
+    <wire from="(2250,960)" to="(2380,960)"/>
+    <wire from="(2340,520)" to="(2460,520)"/>
+    <wire from="(2340,540)" to="(2350,540)"/>
+    <wire from="(2350,480)" to="(2350,540)"/>
+    <wire from="(2350,480)" to="(2380,480)"/>
+    <wire from="(2350,540)" to="(2370,540)"/>
+    <wire from="(2350,560)" to="(2350,720)"/>
+    <wire from="(2350,560)" to="(2370,560)"/>
+    <wire from="(2380,570)" to="(2380,960)"/>
+    <wire from="(240,420)" to="(240,480)"/>
+    <wire from="(240,420)" to="(310,420)"/>
+    <wire from="(240,480)" to="(280,480)"/>
+    <wire from="(240,540)" to="(240,570)"/>
+    <wire from="(240,540)" to="(280,540)"/>
+    <wire from="(240,570)" to="(260,570)"/>
+    <wire from="(2400,550)" to="(2410,550)"/>
+    <wire from="(2410,540)" to="(2410,550)"/>
+    <wire from="(2410,540)" to="(2460,540)"/>
+    <wire from="(2440,860)" to="(2450,860)"/>
+    <wire from="(2450,560)" to="(2450,860)"/>
+    <wire from="(2450,560)" to="(2460,560)"/>
+    <wire from="(2680,520)" to="(2710,520)"/>
+    <wire from="(280,500)" to="(280,540)"/>
+    <wire from="(280,540)" to="(560,540)"/>
+    <wire from="(290,200)" to="(320,200)"/>
+    <wire from="(3020,380)" to="(3040,380)"/>
+    <wire from="(3020,530)" to="(3040,530)"/>
+    <wire from="(3030,1090)" to="(3040,1090)"/>
+    <wire from="(3030,1130)" to="(3040,1130)"/>
+    <wire from="(3030,1230)" to="(3040,1230)"/>
+    <wire from="(3030,1270)" to="(3040,1270)"/>
+    <wire from="(3030,420)" to="(3040,420)"/>
+    <wire from="(3030,570)" to="(3040,570)"/>
+    <wire from="(3030,670)" to="(3040,670)"/>
+    <wire from="(3030,710)" to="(3040,710)"/>
+    <wire from="(3030,810)" to="(3040,810)"/>
+    <wire from="(3030,850)" to="(3040,850)"/>
+    <wire from="(3030,940)" to="(3040,940)"/>
+    <wire from="(3030,980)" to="(3040,980)"/>
+    <wire from="(3100,1090)" to="(3380,1090)"/>
+    <wire from="(3100,1230)" to="(3380,1230)"/>
+    <wire from="(3100,380)" to="(3130,380)"/>
+    <wire from="(3100,530)" to="(3130,530)"/>
+    <wire from="(3100,670)" to="(3130,670)"/>
+    <wire from="(3100,810)" to="(3130,810)"/>
+    <wire from="(3100,940)" to="(3130,940)"/>
+    <wire from="(330,440)" to="(330,450)"/>
+    <wire from="(330,450)" to="(340,450)"/>
+    <wire from="(3360,420)" to="(3410,420)"/>
+    <wire from="(3360,490)" to="(3430,490)"/>
+    <wire from="(3380,1080)" to="(3380,1090)"/>
+    <wire from="(3380,1090)" to="(3610,1090)"/>
+    <wire from="(3380,1220)" to="(3380,1230)"/>
+    <wire from="(3380,1230)" to="(3610,1230)"/>
+    <wire from="(3390,450)" to="(3430,450)"/>
+    <wire from="(340,410)" to="(410,410)"/>
+    <wire from="(340,430)" to="(500,430)"/>
+    <wire from="(3400,470)" to="(3400,550)"/>
+    <wire from="(3400,470)" to="(3430,470)"/>
+    <wire from="(3420,460)" to="(3430,460)"/>
+    <wire from="(3490,590)" to="(3490,820)"/>
+    <wire from="(3490,590)" to="(3710,590)"/>
+    <wire from="(3490,820)" to="(3600,820)"/>
+    <wire from="(3580,860)" to="(3600,860)"/>
+    <wire from="(3580,950)" to="(3600,950)"/>
+    <wire from="(3590,670)" to="(3600,670)"/>
+    <wire from="(3590,710)" to="(3600,710)"/>
+    <wire from="(3590,990)" to="(3600,990)"/>
+    <wire from="(3600,1130)" to="(3610,1130)"/>
+    <wire from="(3600,1270)" to="(3610,1270)"/>
+    <wire from="(3660,670)" to="(3810,670)"/>
+    <wire from="(3660,820)" to="(3810,820)"/>
+    <wire from="(3660,950)" to="(3700,950)"/>
+    <wire from="(3670,1090)" to="(3860,1090)"/>
+    <wire from="(3670,1230)" to="(3710,1230)"/>
+    <wire from="(3670,490)" to="(3710,490)"/>
+    <wire from="(370,450)" to="(380,450)"/>
+    <wire from="(3710,490)" to="(3710,590)"/>
+    <wire from="(3810,670)" to="(3810,730)"/>
+    <wire from="(3810,730)" to="(3850,730)"/>
+    <wire from="(3810,750)" to="(3810,820)"/>
+    <wire from="(3810,750)" to="(3850,750)"/>
+    <wire from="(3860,760)" to="(3860,1090)"/>
+    <wire from="(3880,740)" to="(3920,740)"/>
+    <wire from="(500,430)" to="(500,480)"/>
+    <wire from="(500,500)" to="(540,500)"/>
+    <wire from="(540,360)" to="(540,500)"/>
+    <wire from="(540,360)" to="(570,360)"/>
+    <wire from="(560,440)" to="(560,540)"/>
+    <wire from="(560,440)" to="(600,440)"/>
+    <wire from="(560,540)" to="(890,540)"/>
+    <wire from="(580,380)" to="(600,380)"/>
+    <wire from="(840,460)" to="(870,460)"/>
+    <wire from="(870,460)" to="(870,500)"/>
+    <wire from="(870,500)" to="(890,500)"/>
+    <wire from="(950,500)" to="(1140,500)"/>
   </circuit>
   <vhdl name="ALU">library IEEE;&#13;
 use IEEE.STD_LOGIC_1164.ALL;&#13;
@@ -4007,5 +4023,408 @@ begin
   end process;
 
 end architecture rtl;
+</vhdl>
+  <vhdl name="CPU_Core">
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity CPU_Core is
+    port (
+        clk            : in std_logic;
+        reset          : in std_logic;
+        priority       : in std_logic;
+        
+        -- CPU interface
+        wantedAddress  : in std_logic_vector(2 downto 0);
+        
+        -- SDRAM interface
+        read_en        : out std_logic;
+        write_en       : out std_logic;
+        Sdram_addr     : out std_logic_vector(2 downto 0);
+        Sdram_data_in  : in std_logic_vector(31 downto 0);
+        Sdram_data_out : out std_logic_vector(31 downto 0);
+        
+        -- MSI protocol - outgoing requests
+        cpu_wr_req_out : out std_logic;
+        cpu_rd_req_out : out std_logic;
+        cpu_req_addr_out : out std_logic_vector(2 downto 0);
+        
+        -- MSI protocol - incoming requests (snooping)
+        cpu_wr_req_in  : in std_logic;
+        cpu_rd_req_in  : in std_logic;
+        cpu_req_addr_in : in std_logic_vector(2 downto 0);
+        
+        -- Cache-to-cache communication - outgoing
+        cache_to_cache_req_out : out std_logic;
+        cache_to_cache_req_address_out : out std_logic_vector(2 downto 0);
+        cache_to_cache_resp_out : out std_logic;
+        cache_to_cache_resp_out_ready : out std_logic;
+        cache_to_cache_resp_out_data : out std_logic_vector(31 downto 0);
+        
+        -- Cache-to-cache communication - incoming
+        cache_to_cache_req_in : in std_logic;
+        cache_to_cache_req_address_in : in std_logic_vector(2 downto 0);
+        cache_to_cache_resp_in : in std_logic;
+        cache_to_cache_resp_in_ready : in std_logic;
+        cache_to_cache_resp_in_data : in std_logic_vector(31 downto 0)
+    );
+end CPU_Core;
+
+architecture Behavioral of CPU_Core is
+    -- Cache configuration
+    constant CACHE_SIZE : integer := 4;
+    
+    -- MSI states
+    type msi_state_type is (MSI_INVALID, MSI_SHARED, MSI_MODIFIED);
+    
+    -- Cache line structure
+    type cache_line_type is record
+        msi_state : msi_state_type;
+        address   : std_logic_vector(2 downto 0);
+        data      : std_logic_vector(31 downto 0);
+        valid     : std_logic;
+    end record;
+    
+    type cache_array_type is array (0 to CACHE_SIZE-1) of cache_line_type;
+    
+    -- CPU operation states
+    type cpu_state_type is (CPU_IDLE, CPU_READ, CPU_WRITE, CPU_WAIT_CACHE, CPU_WAIT_SDRAM);
+    
+    -- Cache operation states  
+    type cache_state_type is (CACHE_CHECK, CACHE_HIT, CACHE_MISS, CACHE_COHERENCE, CACHE_SDRAM_ACCESS);
+    
+    -- Signals
+    signal cache_mem : cache_array_type;
+    signal cpu_state : cpu_state_type;
+    signal cache_state : cache_state_type;
+    signal current_address : std_logic_vector(2 downto 0);
+    signal current_data : std_logic_vector(31 downto 0);
+    signal cache_hit_flag : std_logic;
+    signal cache_hit_index : integer range 0 to CACHE_SIZE-1;
+    signal evict_index : integer range 0 to CACHE_SIZE-1;
+    signal operation_type : std_logic; -- 0 = read, 1 = write
+    signal cycle_counter : integer range 0 to 15;
+    
+    -- Helper functions
+    function find_cache_line(addr : std_logic_vector(2 downto 0); cache_mem : cache_array_type) 
+        return integer is
+    begin
+        for i in 0 to CACHE_SIZE-1 loop
+            if cache_mem(i).valid = '1' and cache_mem(i).address = addr then
+                return i;
+            end if;
+        end loop;
+        return -1; -- Not found
+    end function;
+    
+    function find_empty_line(cache_mem : cache_array_type) return integer is
+    begin
+        for i in 0 to CACHE_SIZE-1 loop
+            if cache_mem(i).valid = '0' then
+                return i;
+            end if;
+        end loop;
+        return -1; -- Cache full
+    end function;
+
+begin
+
+    -- Main cache controller process
+    main_process: process(clk, reset)
+        variable hit_index : integer;
+        variable empty_index : integer;
+    begin
+        if reset = '1' then
+            -- Initialize cache
+            for i in 0 to CACHE_SIZE-1 loop
+                cache_mem(i).msi_state &lt;= MSI_INVALID;
+                cache_mem(i).address &lt;= (others =&gt; '0');
+                cache_mem(i).data &lt;= (others =&gt; '0');
+                cache_mem(i).valid &lt;= '0';
+            end loop;
+            
+            -- Reset state machines
+            cpu_state &lt;= CPU_IDLE;
+            cache_state &lt;= CACHE_CHECK;
+            
+            -- Reset outputs
+            read_en &lt;= '0';
+            write_en &lt;= '0';
+            cpu_wr_req_out &lt;= '0';
+            cpu_rd_req_out &lt;= '0';
+            cache_to_cache_req_out &lt;= '0';
+            cache_to_cache_resp_out &lt;= '0';
+            cache_to_cache_resp_out_ready &lt;= '0';
+            
+            evict_index &lt;= 0;
+            cycle_counter &lt;= 0;
+            
+        elsif rising_edge(clk) then
+            -- Default signal values
+            read_en &lt;= '0';
+            write_en &lt;= '0';
+            cache_to_cache_req_out &lt;= '0';
+            cache_to_cache_resp_out &lt;= '0';
+            cache_to_cache_resp_out_ready &lt;= '0';
+            
+            -- Handle snooping requests from other caches
+            if cache_to_cache_req_in = '1' then
+                hit_index := find_cache_line(cache_to_cache_req_address_in, cache_mem);
+                if hit_index &gt;= 0 then
+                    if cache_mem(hit_index).msi_state = MSI_MODIFIED then
+                        -- Provide data and transition to shared
+                        cache_to_cache_resp_out &lt;= '1';
+                        cache_to_cache_resp_out_data &lt;= cache_mem(hit_index).data;
+                        cache_mem(hit_index).msi_state &lt;= MSI_SHARED;
+                    elsif cache_mem(hit_index).msi_state = MSI_SHARED then
+                        -- Provide data, stay shared
+                        cache_to_cache_resp_out &lt;= '1';
+                        cache_to_cache_resp_out_data &lt;= cache_mem(hit_index).data;
+                    end if;
+                else
+                    cache_to_cache_resp_out &lt;= '0';
+                end if;
+                cache_to_cache_resp_out_ready &lt;= '1';
+            end if;
+            
+            -- Handle invalidation requests
+            if cpu_wr_req_in = '1' then
+                hit_index := find_cache_line(cpu_req_addr_in, cache_mem);
+                if hit_index &gt;= 0 then
+                    cache_mem(hit_index).msi_state &lt;= MSI_INVALID;
+                    cache_mem(hit_index).valid &lt;= '0';
+                end if;
+            end if;
+            
+            -- Main CPU state machine
+            case cpu_state is
+                when CPU_IDLE =&gt;
+                    cycle_counter &lt;= cycle_counter + 1;
+                    
+                    -- Simple test pattern
+                    if cycle_counter = 5 then
+                        cpu_state &lt;= CPU_WRITE;
+                        current_address &lt;= wantedAddress;
+                        current_data &lt;= x"DEADBEEF";
+                        operation_type &lt;= '1'; -- write
+                        cpu_wr_req_out &lt;= '1';
+                        cpu_req_addr_out &lt;= wantedAddress;
+                        cache_state &lt;= CACHE_CHECK;
+                        cycle_counter &lt;= 0;
+                    elsif cycle_counter = 10 then
+                        cpu_state &lt;= CPU_READ;
+                        current_address &lt;= wantedAddress;
+                        operation_type &lt;= '0'; -- read
+                        cpu_rd_req_out &lt;= '1';
+                        cpu_req_addr_out &lt;= wantedAddress;
+                        cache_state &lt;= CACHE_CHECK;
+                        cycle_counter &lt;= 0;
+                    end if;
+                
+                when CPU_READ | CPU_WRITE =&gt;
+                    case cache_state is
+                        when CACHE_CHECK =&gt;
+                            hit_index := find_cache_line(current_address, cache_mem);
+                            if hit_index &gt;= 0 and cache_mem(hit_index).msi_state /= MSI_INVALID then
+                                -- Cache hit
+                                cache_hit_flag &lt;= '1';
+                                cache_hit_index &lt;= hit_index;
+                                cache_state &lt;= CACHE_HIT;
+                            else
+                                -- Cache miss
+                                cache_hit_flag &lt;= '0';
+                                cache_state &lt;= CACHE_MISS;
+                            end if;
+                        
+                        when CACHE_HIT =&gt;
+                            if operation_type = '0' then
+                                -- Read hit - return data
+                                cpu_state &lt;= CPU_IDLE;
+                                cpu_rd_req_out &lt;= '0';
+                                cache_state &lt;= CACHE_CHECK;
+                            else
+                                -- Write hit - update data and set modified
+                                cache_mem(cache_hit_index).data &lt;= current_data;
+                                cache_mem(cache_hit_index).msi_state &lt;= MSI_MODIFIED;
+                                cpu_state &lt;= CPU_IDLE;
+                                cpu_wr_req_out &lt;= '0';
+                                cache_state &lt;= CACHE_CHECK;
+                            end if;
+                        
+                        when CACHE_MISS =&gt;
+                            -- Try cache-to-cache transfer first
+                            cache_to_cache_req_out &lt;= '1';
+                            cache_to_cache_req_address_out &lt;= current_address;
+                            cache_state &lt;= CACHE_COHERENCE;
+                        
+                        when CACHE_COHERENCE =&gt;
+                            if cache_to_cache_resp_in_ready = '1' then
+                                if cache_to_cache_resp_in = '1' then
+                                    -- Cache-to-cache hit
+                                    empty_index := find_empty_line(cache_mem);
+                                    if empty_index &gt;= 0 then
+                                        -- Use empty line
+                                        cache_mem(empty_index).valid &lt;= '1';
+                                        cache_mem(empty_index).address &lt;= current_address;
+                                        cache_mem(empty_index).data &lt;= cache_to_cache_resp_in_data;
+                                        if operation_type = '0' then
+                                            cache_mem(empty_index).msi_state &lt;= MSI_SHARED;
+                                        else
+                                            cache_mem(empty_index).msi_state &lt;= MSI_MODIFIED;
+                                            cache_mem(empty_index).data &lt;= current_data;
+                                        end if;
+                                    else
+                                        -- Evict using round-robin
+                                        if cache_mem(evict_index).msi_state = MSI_MODIFIED then
+                                            -- Write back to SDRAM
+                                            write_en &lt;= '1';
+                                            Sdram_addr &lt;= cache_mem(evict_index).address;
+                                            Sdram_data_out &lt;= cache_mem(evict_index).data;
+                                        end if;
+                                        cache_mem(evict_index).valid &lt;= '1';
+                                        cache_mem(evict_index).address &lt;= current_address;
+                                        cache_mem(evict_index).data &lt;= cache_to_cache_resp_in_data;
+                                        if operation_type = '0' then
+                                            cache_mem(evict_index).msi_state &lt;= MSI_SHARED;
+                                        else
+                                            cache_mem(evict_index).msi_state &lt;= MSI_MODIFIED;
+                                            cache_mem(evict_index).data &lt;= current_data;
+                                        end if;
+                                        evict_index &lt;= (evict_index + 1) mod CACHE_SIZE;
+                                    end if;
+                                    cpu_state &lt;= CPU_IDLE;
+                                    if operation_type = '0' then
+                                        cpu_rd_req_out &lt;= '0';
+                                    else
+                                        cpu_wr_req_out &lt;= '0';
+                                    end if;
+                                    cache_state &lt;= CACHE_CHECK;
+                                else
+                                    -- Cache-to-cache miss, go to SDRAM
+                                    cache_state &lt;= CACHE_SDRAM_ACCESS;
+                                end if;
+                            end if;
+                        
+                        when CACHE_SDRAM_ACCESS =&gt;
+                            if operation_type = '0' then
+                                read_en &lt;= '1';
+                            else
+                                write_en &lt;= '1';
+                                Sdram_data_out &lt;= current_data;
+                            end if;
+                            Sdram_addr &lt;= current_address;
+                            
+                            -- Allocate cache line
+                            empty_index := find_empty_line(cache_mem);
+                            if empty_index &gt;= 0 then
+                                cache_mem(empty_index).valid &lt;= '1';
+                                cache_mem(empty_index).address &lt;= current_address;
+                                if operation_type = '0' then
+                                    cache_mem(empty_index).data &lt;= Sdram_data_in;
+                                    cache_mem(empty_index).msi_state &lt;= MSI_SHARED;
+                                else
+                                    cache_mem(empty_index).data &lt;= current_data;
+                                    cache_mem(empty_index).msi_state &lt;= MSI_MODIFIED;
+                                end if;
+                            else
+                                -- Evict using round-robin
+                                if cache_mem(evict_index).msi_state = MSI_MODIFIED then
+                                    write_en &lt;= '1';
+                                    Sdram_addr &lt;= cache_mem(evict_index).address;
+                                    Sdram_data_out &lt;= cache_mem(evict_index).data;
+                                end if;
+                                cache_mem(evict_index).valid &lt;= '1';
+                                cache_mem(evict_index).address &lt;= current_address;
+                                if operation_type = '0' then
+                                    cache_mem(evict_index).data &lt;= Sdram_data_in;
+                                    cache_mem(evict_index).msi_state &lt;= MSI_SHARED;
+                                else
+                                    cache_mem(evict_index).data &lt;= current_data;
+                                    cache_mem(evict_index).msi_state &lt;= MSI_MODIFIED;
+                                end if;
+                                evict_index &lt;= (evict_index + 1) mod CACHE_SIZE;
+                            end if;
+                            
+                            cpu_state &lt;= CPU_IDLE;
+                            if operation_type = '0' then
+                                cpu_rd_req_out &lt;= '0';
+                            else
+                                cpu_wr_req_out &lt;= '0';
+                            end if;
+                            cache_state &lt;= CACHE_CHECK;
+                    end case;
+                
+                when others =&gt;
+                    cpu_state &lt;= CPU_IDLE;
+            end case;
+        end if;
+    end process;
+
+end Behavioral;
+</vhdl>
+  <vhdl name="sdram">
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity sdram is
+    port(
+        clk        : in  std_logic;
+        reset      : in  std_logic;
+        operation1 : in  std_logic;                     -- 0=read, 1=write on port1
+        operation2 : in  std_logic;                     -- 0=read, 1=write on port2
+        ready1     : in  std_logic;                     -- handshake from CPU1
+        ready2     : in  std_logic;                     -- handshake from CPU2
+        addr1      : in  std_logic_vector(2 downto 0);
+        addr2      : in  std_logic_vector(2 downto 0);
+        data_in1   : in  std_logic_vector(31 downto 0); -- CPU→SDRAM data
+        data_in2   : in  std_logic_vector(31 downto 0);
+        data_out1  : out std_logic_vector(31 downto 0); -- SDRAM→CPU data
+        data_out2  : out std_logic_vector(31 downto 0)
+    );
+end sdram;
+
+architecture Behavioral of sdram is
+    type memory_array is array (0 to 7) of std_logic_vector(31 downto 0);
+    signal memory : memory_array;
+begin
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            -- Initialize memory with test pattern
+            memory(0) &lt;= x"00000000";
+            memory(1) &lt;= x"11111111";
+            memory(2) &lt;= x"22222222";
+            memory(3) &lt;= x"33333333";
+            memory(4) &lt;= x"44444444";
+            memory(5) &lt;= x"55555555";
+            memory(6) &lt;= x"66666666";
+            memory(7) &lt;= x"77777777";
+        elsif rising_edge(clk) then
+            -- Port 1 operations
+            if ready1 = '1' then
+                if operation1 = '1' then
+                    -- Write
+                    memory(to_integer(unsigned(addr1))) &lt;= data_in1;
+                else
+                    -- Read
+                    data_out1 &lt;= memory(to_integer(unsigned(addr1)));
+                end if;
+            end if;
+            
+            -- Port 2 operations
+            if ready2 = '1' then
+                if operation2 = '1' then
+                    -- Write
+                    memory(to_integer(unsigned(addr2))) &lt;= data_in2;
+                else
+                    -- Read
+                    data_out2 &lt;= memory(to_integer(unsigned(addr2)));
+                end if;
+            end if;
+        end if;
+    end process;
+end Behavioral;
 </vhdl>
 </project>
